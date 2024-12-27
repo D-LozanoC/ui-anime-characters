@@ -1,0 +1,38 @@
+### GET AllAnimes
+GET http://localhost:3000/api/animes
+
+### GET Animes by Genres or Status
+GET http://localhost:3000/api/animes?genres=action,fantasy&status=ongoing
+
+### GET Animes Sorting and Pagination
+GET http://localhost:3000/api/animes?order=asc&pageSize=2&page=1
+
+### GET Animes by ID
+GET http://localhost:3000/api/animes/65a7fe92-16c9-4a81-945b-14a43a468758
+
+### GET Animes by Title
+GET http://localhost:3000/api/animes/Dandadan
+
+### POST Create Anime
+POST http://localhost:3000/api/animes
+Content-Type: application/json
+
+{
+    "anime":{
+        "thumbnail":"https://example.com/thumbnail/aot.jpg",
+        "title":"Boku no pico",
+        "synopsis":"Un anime para niños menores de 12 años",
+        "statusName":"Completed",
+        "studio":"Ordoñesito",
+        "director":"Felipe",
+        "releaseDate":"2024-10-04",
+        "episodeCount":"12",
+        "durationPerEpisode":"24",
+        "genres":["Action","Comedy","Supernatural","Mystery","Sci-Fi"]
+    }
+}
+
+### PATCH Update Anime
+
+### DELETE Delete Anime
+DELETE http://localhost:3000/api/animes/a304dd8f-b42a-43d4-bb2d-f2176089853c

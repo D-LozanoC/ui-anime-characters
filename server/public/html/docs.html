@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AnimeDB - API de Animes y Personajes</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>AnimeDB</h1>
+            <p>Accede a la información más completa sobre animes y personajes</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#animes">Animes</a></li>
+                <li><a href="#personajes">Personajes</a></li>
+                <li><a href="#acerca-de">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="animes">
+            <h2>Animes Disponibles</h2>
+            <p>La API ofrece acceso a una lista de animes disponibles con detalles como nombre, descripción, episodios y
+                más. Cada anime está identificado por un ID único que permite realizar acciones como ver sus personajes,
+                actualizar la información o eliminarlo de la base de datos.</p>
+            <button class="btn" onclick="window.location.href='/api/animes'">Ver Animes</button>
+        </section>
+
+        <section id="personajes">
+            <h2>Personajes de Animes</h2>
+            <p>Los personajes están agrupados dentro de cada anime. Para obtener la lista de personajes de un anime
+                específico, es necesario utilizar el ID del anime en la siguiente ruta:</p>
+            <pre>/api/animes/:animeId/characters</pre>
+            <p>Cada personaje también tiene un ID único, lo que permite acceder a sus detalles específicos, como nombre,
+                biografía, habilidades y más.</p>
+            <button class="btn" onclick="window.location.href='/api/animes/:animeId/characters'">Ver Personajes</button>
+        </section>
+
+        <section id="acerca-de">
+            <h2>Acerca de AnimeDB</h2>
+            <p>AnimeDB es una API pública que proporciona acceso a una base de datos de animes y sus personajes. Está
+                diseñada para ser fácil de integrar en proyectos relacionados con anime y proporciona endpoints
+                sencillos para obtener información sobre animes y sus personajes.</p>
+
+            <h3>¿Cómo Funciona la API?</h3>
+            <p>La API sigue una arquitectura RESTful. Las solicitudes se realizan utilizando los métodos HTTP estándar
+                (GET, POST, PATCH, DELETE). Los recursos principales de la API son los animes y los personajes. A
+                continuación se detallan los endpoints disponibles:</p>
+
+            <h4>Endpoints Principales:</h4>
+            <ul>
+                <li><strong>GET /api/animes</strong>: Obtiene una lista de todos los animes disponibles.</li>
+                <li><strong>GET /api/animes/:animeId</strong>: Obtiene los detalles de un anime específico usando su ID
+                    único.</li>
+                <li><strong>POST /api/animes</strong>: Crea un nuevo anime en la base de datos.</li>
+                <li><strong>PATCH /api/animes/:animeId</strong>: Actualiza la información de un anime existente.</li>
+                <li><strong>DELETE /api/animes/:animeId</strong>: Elimina un anime de la base de datos.</li>
+            </ul>
+
+            <h4>Personajes:</h4>
+            <ul>
+                <li><strong>GET /api/animes/:animeId/characters</strong>: Obtiene la lista de personajes de un anime
+                    específico.</li>
+                <li><strong>GET /api/animes/:animeId/characters/:characterId</strong>: Obtiene los detalles de un
+                    personaje específico.</li>
+                <li><strong>POST /api/animes/:animeId/characters</strong>: Crea un nuevo personaje dentro de un anime.
+                </li>
+                <li><strong>PATCH /api/animes/:animeId/characters/:characterId</strong>: Actualiza la información de un
+                    personaje específico.</li>
+                <li><strong>DELETE /api/animes/:animeId/characters/:characterId</strong>: Elimina un personaje
+                    específico de un anime.</li>
+            </ul>
+
+            <h3>Ejemplo de Respuesta</h3>
+            <p>Cuando se hace una solicitud a <code>/api/animes/:animeId/characters</code>, la API devuelve una lista de
+                personajes en formato JSON:</p>
+            <pre>
+{
+  "characters": [
+    {
+      "id": 1,
+      "name": "Naruto Uzumaki",
+      "role": "Protagonista",
+      "abilities": ["Rasengan", "Kage Bunshin no Jutsu"]
+    },
+    {
+      "id": 2,
+      "name": "Sasuke Uchiha",
+      "role": "Rival",
+      "abilities": ["Chidori", "Sharingan"]
+    }
+  ]
+}
+            </pre>
+
+            <h3>Formato de Fechas</h3>
+            <p>Las fechas de estreno de animes y personajes se devuelven en formato ISO 8601, por ejemplo:
+                <code>2024-01-01T00:00:00Z</code></p>
+
+            <h3>Errores Comunes</h3>
+            <p>Si se realiza una solicitud incorrecta o si el anime o personaje no existe, la API devolverá un mensaje
+                de error con el código adecuado:</p>
+            <ul>
+                <li><strong>404 Not Found</strong>: El recurso solicitado no existe.</li>
+                <li><strong>400 Bad Request</strong>: La solicitud tiene un formato incorrecto.</li>
+                <li><strong>500 Internal Server Error</strong>: Un error inesperado ha ocurrido en el servidor.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AnimeDB. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

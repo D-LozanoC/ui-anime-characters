@@ -1,0 +1,59 @@
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+ 
+ body {
+    background-color: #121212; /* Fondo oscuro */
+    color: #f5f5f5; /* Texto claro para contraste */
+    font-family: 'Montserrat', sans-serif; /* Tipografía limpia */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    background-color: #1e1e1e; /* Fondo más oscuro para el contenedor */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.errorHeader {
+    font-size: 3rem;
+    margin: 0;
+    color: #e91e63;
+}
+
+h1 {
+    font-size: 100px;
+    margin: 0;
+    color: #e91e63; /* Color magenta para resaltar el código de error */
+}
+
+h2 {
+    font-size: 24px;
+    color: #fff; /* Blanco para el título */
+}
+
+p {
+    font-size: 18px;
+    color: #b0b0b0; /* Gris claro para el texto */
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e91e63; /* Magenta brillante */
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #d81b60; /* Magenta más oscuro en hover */
+}

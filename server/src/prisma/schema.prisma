@@ -1,0 +1,60 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Anime {
+  id                 String      @id @default(uuid())
+  thumbnail          String
+  title              String      @unique
+  synopsis           String
+  genres             Genre[]     @relation("AnimeGenres")
+  statusName         String
+  status             Status      @relation(fields: [statusName], references: [name])
+  studio             String
+  director           String
+  releaseDate        String
+  episodeCount       String
+  durationPerEpisode String
+  characters         Character[]
+}
+
+model Status {
+  name  String  @id @unique
+  anime Anime[]
+}
+
+model Genre {
+  name  String  @unique @id
+  anime Anime[] @relation("AnimeGenres")
+}
+
+model Character {
+  id          String      @id @default(uuid())
+  animeId     String
+  anime       Anime       @relation(fields: [animeId], references: [id])
+  name        String
+  description String
+  origin      String
+  birthDate   String
+  age         String
+  abilities   Abilities[] @relation("CharacterAbilities")
+  role        String
+  thumbnail   String
+  relations   Character[] @relation("relationship")
+  relatedTo   Character[] @relation("relationship")
+  personality String
+  background  String
+  bio String
+}
+
+model Abilities {
+  name        String      @id @unique
+  description String
+  character   Character[] @relation("CharacterAbilities")
+}
