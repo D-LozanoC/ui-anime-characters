@@ -1,0 +1,162 @@
+@import url('root.css');
+
+
+.modalForm {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .updateForm {
+        overflow: hidden;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+.formGroup {
+    padding: .5rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    textarea {
+        width: 100%;
+        height: 7rem;
+        resize: none;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    label {
+        font-weight: 500;
+        color: var(--text-color-light);
+    }
+
+    span {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: .5rem;
+
+        input {
+            width: auto;
+        }
+    }
+
+    .synopsisForm {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        textarea {
+            width: auto;
+            height: 4rem;
+        }
+    }
+}
+
+
+.date {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding: .5rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    input {
+        width: auto;
+    }
+
+    label {
+        font-weight: 500;
+        color: var(--text-color-light);
+    }
+
+    input {
+        width: 80%;
+    }
+}
+
+.form-actions {
+    button {
+        width: 100%;
+    }
+}
+
+.react-select-container {
+    color: var(--text-color);
+    width: 100%;
+}
+
+.react-select-container-status {
+    color: var(--text-color);
+    width: 30%;
+}
+
+.react-select__control {
+    border-color: #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.react-select__multi-value {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.react-select__multi-value__remove {
+    color: var(--main-color);
+    cursor: pointer;
+}
+
+button {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: var(--submit-color);
+    color: var(--text-color-light);
+    transition: all ease 300ms;
+
+    &:hover {
+        background-color: var(--submit-color-hover);
+        filter: brightness(1.2);
+    }
+
+    &:active {
+        background-color: var(--submit-color-active);
+    }
+}
+
+button[type="button"] {
+    background-color: var(--advertence-color);
+    color: var(--text-color-light);
+    transition: all ease 300ms;
+
+    &:hover {
+        background-color: var(--advertence-color-hover);
+        filter: brightness(1.2);
+    }
+
+    &:active {
+        background-color: var(--advertence-color-active);
+    }
+}

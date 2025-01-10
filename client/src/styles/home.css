@@ -1,0 +1,87 @@
+
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--main-color), var(--secondary-color));
+    color: #fff;
+    padding: 60px 20px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background: #fff;
+    color: var(--main-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--main-color);
+    color: #fff;
+}
+
+.features {
+    margin-top: 40px;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.feature {
+    background: var(--bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feature h3 {
+    margin-top: 0;
+    color: var(--main-color);
+}
+
+.feature p {
+    color: var(--text-color);
+}
+
+.cta-section {
+    margin-top: 50px;
+    background: var(--main-color);
+    color: #fff;
+    padding: 40px 20px;
+    border-radius: 10px;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}

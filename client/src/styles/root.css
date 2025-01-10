@@ -1,0 +1,30 @@
+:root {
+  --main-color: #e91e63;
+  --main-color-dark: #b81c50;
+  --main-color-active: #a11a47;
+  --secondary-color: #ff80ab;
+  --text-color: #333;
+  --bg-light: #f9f9f9;
+  --text-color-light: #eee;
+
+  --ongoing-color: #007BFF;
+  --upcoming-color: #FFB300;
+  --completed-color: #28A745;
+  --cancelled-color: #DC3545;
+
+  --advertence-color: #D32F2F;
+  --confirm-color: #1976D2;
+  --submit-color: #4CAF50;
+  --secondary-button-color: rgba(0, 0, 0, .7);
+
+  --advertence-color-hover: #C62828;
+  --confirm-color-hover: #1565C0;
+  --submit-color-hover: #388E3C;
+  --secondary-button-color-hover: rgba(0, 0, 0, .8);
+
+  --advertence-color-active: #B71C1C;
+  --confirm-color-active: #0D47A1;
+  --submit-color-active: #2C6B2F;
+  --secondary-button-color-active: rgba(0, 0, 0, .9);
+
+}

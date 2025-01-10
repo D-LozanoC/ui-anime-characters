@@ -1,0 +1,28 @@
+@import url('root.css');
+
+footer {
+    background: var(--main-color);
+    color: var(--text-color-light);
+    height: 4rem;
+    padding: .4rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .footer-social {
+        display: flex;
+        gap: 1rem;
+        a {
+            color: var(--text-color-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all ease 300ms;
+            &:hover {
+                transform: scale(1.2);
+                filter: brightness(1.75);
+            }
+        }
+    }
+}
+
+
