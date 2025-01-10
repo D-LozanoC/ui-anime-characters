@@ -1,21 +1,36 @@
 import { Anime, Character } from "@prisma/client";
 import { queryProps } from "./props.ts";
+import { Request } from "express";
 
+export interface GenresModelInterface {
+    getAllGenres(): Promise<string[] | null>;
+}
+
+export interface AbilitiesModelInterface {
+    getAllAbilities(): Promise<string[] | null>;
+}
+
+export interface StatusModelInterface {
+    getAllStatus(): Promise<string[] | null>;
+}
 
 export interface AnimeModelInterface {
-    getAllAnimes({genres, statusName, order, page, pageSize}: queryProps): Promise<Anime[]> | Error;
+    getAllAnimes(filters: queryProps): Promise<Anime[]> | Error;
     getAnimeById(id: string): Promise<Anime | null>;
     getAnimeByTitle(title: string): Promise<Anime | null>;
-    createAnime(anime: Anime, genres: string[]): void;
-    updateAnime(id: string, anime: Anime): void;
+    createAnime(anime: Omit<Anime, 'id'>, genres: string[]): Promise<void>;
+    updateAnime(anime: Partial<Anime>): Promise<void>;
+    updateAnimeAndGenres(anime: Partial<Anime>, genres: string[]): Promise<void>;
     deleteAnime(id: string): void;
 }
 
 export interface CharacterModelInterface {
-    getAllCharacters(animeId: string): Promise<Character[]>;
-    getCharacterById(id: string): Promise<Character>;
-    createCharacter(character: Character): Promise<void>;
-    updateCharacter(character: Character): Promise<void>;
+    getAllCharacters(animeId: string, filters: queryProps): Promise<Character[]>;
+    getCharacterById(id: string): Promise<Character | null>;
+    getCharacterByName(name: string): Promise<Character | null>;
+    createCharacter(character: Omit<Character & { abilities: string[] }, 'id'>): Promise<Character | null>;
+    updateCharacter(character: Partial<Character>): Promise<void>;
+    updateCharacterAndAbilities(character: Partial<Character>, abilities: string[]): Promise<void>;
     deleteCharacter(id: string): Promise<void>;
 }
 
@@ -25,4 +40,8 @@ export interface Query {
     skip?: number,
     take?: number,
     include: {}
+}
+
+export interface RequestWithAnimeId extends Request {
+    animeId: string
 }

@@ -5,32 +5,42 @@ import { buildFindManyQuery } from "../utils/queries.ts"
 import { queryProps } from "../types/props.ts"
 
 export default class AnimeModel implements AnimeModelInterface {
-    async getAllAnimes({ genres, statusName, order, page, pageSize }: queryProps): Promise<Anime[]> {
-        return await prismaClient.anime.findMany(buildFindManyQuery({ genres, statusName, order, page, pageSize }))
+    getAllAnimes(filters: queryProps): Promise<Anime[]> {
+        return prismaClient.anime.findMany(buildFindManyQuery(filters))
     }
 
-    async getAnimeById(id: string): Promise<Anime | null> {
-        return await prismaClient.anime.findUnique({
-            where: {
-                id
-            }
-        })
+    getAnimeById(id: string): Promise<Anime | null> {
+        return prismaClient.anime.findUnique({ where: { id }, include: { genres: true } })
     }
 
-    async getAnimeByTitle(title: string): Promise<Anime | null> {
-        return await prismaClient.anime.findUnique({
-            where: {
-                title
-            }
-        })
+    getAnimeByTitle(title: string): Promise<Anime | null> {
+        return prismaClient.anime.findUnique({ where: { title } })
     }
 
-    async createAnime(anime: Anime, genres: string[]) {     
+    async createAnime(anime: Omit<Anime, 'id'>, genres: string[]) {
         await prismaClient.anime.create({
             data: {
                 ...anime,
                 genres: {
-                    connect: genres.map(genre => {
+                    connect: genres.map(genre => ({ name: genre }))
+                }
+            }
+        })
+    }
+
+    async updateAnime(anime: Partial<Anime>): Promise<void> {
+        await prismaClient.anime.update({ where: { id: anime.id }, data: { ...anime } })
+    }
+
+    async updateAnimeAndGenres(anime: Partial<Anime>, genres: string[]): Promise<void> {
+        await prismaClient.anime.update({
+            where: {
+                id: anime.id
+            },
+            data: {
+                ...anime,
+                genres: {
+                    set: genres.map(genre => {
                         return { name: genre }
                     })
                 }
@@ -38,23 +48,8 @@ export default class AnimeModel implements AnimeModelInterface {
         })
     }
 
-    async updateAnime(id: string, anime: Anime) {
-        await prismaClient.anime.update({
-            where: {
-                id
-            },
-            data: {
-                ...anime
-            }
-        })
-    }
-
     async deleteAnime(id: string) {
-        await prismaClient.anime.delete({
-            where: {
-                id
-            }
-        })
+        await prismaClient.anime.delete({ where: { id } })
     }
 }
 

@@ -1,24 +1,26 @@
 import z from 'zod'
-import { Character } from '@prisma/client'
 
 export const CharacterSchema = z.object({
-    id: z.string().uuid(),
     animeId: z.string().uuid(),
     name: z.string(),
     description: z.string(),
-    origin: z.string().optional(),
-    birthDate: z.date().optional(),
-    age: z.string().optional(),
-    abilities: z.array(z.string()).optional(),
+    origin: z.string(),
+    birthDate: z.string(),
+    age: z.string(),
+    abilities: z.array(z.string()),
     relations: z.array(z.string().uuid()).optional(),
     relatedTo: z.array(z.string().uuid()).optional(),
-    role: z.string().optional(),
-    personality: z.string().optional(),
-    background: z.string().optional(),
-    bio: z.string().optional(),
+    role: z.string(),
+    personality: z.string(),
+    background: z.string(),
+    bio: z.string(),
     thumbnail: z.string().url(),
 })
 
-export default function validateCharacter(character: Character) {
+export function validateCharacter(character: any) {
     return CharacterSchema.safeParse(character)
+}
+
+export function validatePartialCharacter(character: any) {
+    return CharacterSchema.partial().safeParse(character)
 }

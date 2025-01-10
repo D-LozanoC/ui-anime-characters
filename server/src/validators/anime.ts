@@ -1,9 +1,7 @@
 import z from 'zod'
 import { CharacterSchema } from './characters.ts'
-import { Anime } from '@prisma/client'
 
 const AnimeSchema = z.object({
-    id: z.string().uuid(),
     thumbnail: z.string().url({ message: "Thumbnail must be a valid URL." }),
     title: z.string().min(1, { message: "Title is required and cannot be empty." }),
     synopsis: z.string().min(10, { message: "Synopsis must be at least 10 characters long." }),
@@ -25,15 +23,16 @@ const AnimeSchema = z.object({
         /^\d+$/,
         { message: "Duration per episode must be a positive integer in minutes." }
     ),
-    characters: CharacterSchema.optional()
+    characters: CharacterSchema.optional(),
+    genres: z.array(z.string()).min(1, { message: "At least one genre is required." })
 })
 
-function validateAnime(anime: Anime) {
-    return AnimeSchema.safeParse(anime)
+function validateAnime(object: any) {
+    return AnimeSchema.safeParse(object)
 }
 
-function validatePartialAnime(anime: Anime){
-    return AnimeSchema.partial().safeParse(anime)
+function validatePartialAnime(object: any){
+    return AnimeSchema.partial().safeParse(object)
 }
 
 export { validateAnime, validatePartialAnime }

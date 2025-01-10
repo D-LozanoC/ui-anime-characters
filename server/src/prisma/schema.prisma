@@ -30,7 +30,7 @@ model Status {
 }
 
 model Genre {
-  name  String  @unique @id
+  name  String  @id @unique
   anime Anime[] @relation("AnimeGenres")
 }
 
@@ -38,7 +38,7 @@ model Character {
   id          String      @id @default(uuid())
   animeId     String
   anime       Anime       @relation(fields: [animeId], references: [id])
-  name        String
+  name        String      @unique
   description String
   origin      String
   birthDate   String
@@ -50,7 +50,7 @@ model Character {
   relatedTo   Character[] @relation("relationship")
   personality String
   background  String
-  bio String
+  bio         String
 }
 
 model Abilities {

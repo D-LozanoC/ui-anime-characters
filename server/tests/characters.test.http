@@ -1,0 +1,127 @@
+### GET All Characters
+GET http://localhost:3001/api/animes/65a7fe92-16c9-4a81-945b-14a43a468758/characters
+
+### Get Character by ID
+GET http://localhost:3000/api/animes/65a7fe92-16c9-4a81-945b-14a43a468758/characters/051cac5f-b64e-477c-82c8-9ce6e8219dd8
+
+### POST Character
+POST http://localhost:3000/api/animes/70b71077-6f9e-44d9-8bd1-eea589883724/characters
+Content-Type: application/json
+
+[
+   {
+      "name":"Naruto Uzumaki",
+      "thumbnail":"https://static.wikia.nocookie.net/naruto/images/9/94/Naruto_Uzumaki.png",
+      "description":"The main protagonist of Naruto Shippuden, known for his unyielding determination, immense chakra reserves, and strong bond with Kurama, the Nine-Tails.",
+      "origin":"Hidden Leaf Village (Konohagakure).",
+      "birthDate":"October 10",
+      "age":"16-17 during Shippuden.",
+      "role":"Protagonist, member of Team 7, and future Hokage.",
+      "personality":"Optimistic, determined, and kind-hearted, with a strong sense of justice and loyalty.",
+      "background":"Naruto's journey began as an outcast striving to prove his worth. Over time, he became a hero by saving his village and achieving his dream of becoming Hokage.",
+      "bio":"Naruto Uzumaki's tale is one of growth, resilience, and transformation. From a lonely boy to the hero of the ninja world, his story inspires with themes of hope and perseverance.",
+      "abilities":[
+         "Shadow Clone Jutsu",
+         "Rasengan",
+         "Sage Mode",
+         "Tailed Beast Bomb"
+      ]
+   },
+   {
+      "name":"Sasuke Uchiha",
+      "thumbnail":"https://static.wikia.nocookie.net/naruto/images/a/a3/Sasuke_Uchiha.png",
+      "description":"A former Leaf Village ninja and Naruto's rival, Sasuke is a prodigy of the Uchiha clan driven by revenge and later by redemption.",
+      "origin":"Hidden Leaf Village (Konohagakure).",
+      "birthDate":"July 23",
+      "age":"16-17 during Shippuden.",
+      "role":"Deuteragonist, rogue ninja, and later ally.",
+      "personality":"Intelligent, determined, and ambitious, Sasuke is initially cold and aloof but develops a sense of loyalty and purpose.",
+      "background":"Sasuke's life was defined by his quest for vengeance against his brother, Itachi. Through his journey, he uncovers deeper truths about his clan and the ninja world.",
+      "bio":"Sasuke's character arc is one of redemption and self-discovery. From avenger to protector, his journey explores the complexities of loyalty, power, and identity.",
+      "abilities":[
+         "Chidori",
+         "Amaterasu",
+         "Susanoo",
+         "Sharingan",
+         "Rinnegan"
+      ]
+   },
+   {
+      "name":"Kakashi Hatake",
+      "thumbnail":"https://static.wikia.nocookie.net/naruto/images/8/87/Kakashi_Hatake.png",
+      "description":"A highly skilled and experienced ninja, Kakashi is the mentor of Team 7 and a former student of the Fourth Hokage.",
+      "origin":"Hidden Leaf Village (Konohagakure).",
+      "birthDate":"September 15",
+      "age":"29-31 during Shippuden.",
+      "role":"Team 7 leader, Jonin, and later Sixth Hokage.",
+      "personality":"Calm, composed, and strategic, Kakashi is a reliable mentor with a hidden sense of humor and a strong sense of duty.",
+      "background":"Kakashi's life is marked by loss and growth, shaped by his experiences as a member of the ANBU Black Ops and his role as a mentor to the next generation.",
+      "bio":"Kakashi Hatake's story highlights the value of teamwork, resilience, and personal growth. As a mentor, he guides his students toward greatness.",
+      "abilities":[
+         "Chidori",
+         "Sharingan",
+         "Combat Prowess",
+         "Quick Thinking"
+      ]
+   },
+   {
+      "name":"Itachi Uchiha",
+      "thumbnail":"https://static.wikia.nocookie.net/naruto/images/9/98/Itachi_Uchiha.png",
+      "description":"A prodigy of the Uchiha clan, Itachi is a complex figure whose actions and motives are driven by love for his village and his younger brother.",
+      "origin":"Hidden Leaf Village (Konohagakure).",
+      "birthDate":"June 9",
+      "age":"21 during Shippuden.",
+      "role":"Former member of the Uchiha clan and Akatsuki.",
+      "personality":"Calm, intelligent, and self-sacrificing, Itachi is a tragic hero who bears the burden of his decisions.",
+      "background":"Itachi's life was dedicated to protecting the Leaf Village and ensuring Sasuke's safety, even at great personal cost.",
+      "bio":"Itachi Uchiha's narrative is one of sacrifice and redemption. His actions, though controversial, are rooted in his love for his family and village.",
+      "abilities":[
+         "Amaterasu",
+         "Susanoo",
+         "Sharingan",
+         "Strategic Thinking"
+      ]
+   },
+   {
+      "name":"Sakura Haruno",
+      "thumbnail":"https://static.wikia.nocookie.net/naruto/images/b/b7/Sakura_Haruno.png",
+      "description":"A member of Team 7 and a talented medical ninja, Sakura grows into one of the strongest kunoichi of her time.",
+      "origin":"Hidden Leaf Village (Konohagakure).",
+      "birthDate":"March 28",
+      "age":"16-17 during Shippuden.",
+      "role":"Team 7 member and medical ninja.",
+      "personality":"Determined, empathetic, and hardworking, Sakura's journey reflects her growth into a capable and confident ninja.",
+      "background":"Sakura's journey begins as a young ninja in love with Sasuke and evolves into a story of personal strength, independence, and courage.",
+      "bio":"Sakura Haruno's development highlights the power of perseverance and self-improvement. Her skills and dedication make her an invaluable ally.",
+      "abilities":[
+         "Healing Jutsu",
+         "Combat Prowess",
+         "Quick Thinking",
+         "Enhanced Reflexes"
+      ]
+   }
+]
+
+###
+
+
+{
+      "name":"Seiko Ayase",
+      "thumbnail":"https://static.wikia.nocookie.net/dandadan/images/3/3d/Seiko_Ayase.png",
+      "description":"Seiko Ayase is Momo’s eccentric grandmother and a seasoned exorcist with a vast knowledge of supernatural phenomena.",
+      "origin":"Earth, modern-day Japan.",
+      "birthDate":"Unknown",
+      "age":"Elderly (exact age unknown).",
+      "role":"Mentor figure and experienced exorcist.",
+      "personality":"Quirky, wise, and fiercely protective of her granddaughter, with a sharp sense of humor.",
+      "background":"Seiko has spent her life studying and combating supernatural forces. Her guidance and skills play a crucial role in aiding Momo and Okarun in their battles.",
+      "bio":"Seiko Ayase’s expertise and unique perspective on the supernatural make her an invaluable ally. Despite her age, she remains sharp and resourceful, often providing critical insights and support.",
+      "abilities":[
+         "Exorcism Techniques",
+         "Spiritual Knowledge",
+         "Protective Talismans",
+         "Quick Thinking"
+      ]
+   }
+
+###

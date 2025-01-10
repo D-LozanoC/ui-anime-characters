@@ -1,38 +1,152 @@
 ### GET AllAnimes
-GET http://localhost:3000/api/animes
-
+GET http://localhost:3001/api/animes
 ### GET Animes by Genres or Status
 GET http://localhost:3000/api/animes?genres=action,fantasy&status=ongoing
-
+### GET Animes by Title
+GET http://localhost:3000/api/animes?title=ñ
 ### GET Animes Sorting and Pagination
 GET http://localhost:3000/api/animes?order=asc&pageSize=2&page=1
-
 ### GET Animes by ID
-GET http://localhost:3000/api/animes/65a7fe92-16c9-4a81-945b-14a43a468758
-
+GET http://localhost:3000/api/animes/204f2e9e-ae75-479d-a00e-f5c618f33a54
 ### GET Animes by Title
 GET http://localhost:3000/api/animes/Dandadan
-
 ### POST Create Anime
-POST http://localhost:3000/api/animes
+POST http://localhost:3001/api/animes
+Content-Type: application/json
+
+[
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/naruto/images/5/57/Naruto_Anime.png/revision/latest?cb=20220618025112",
+    "title": "Naruto",
+    "synopsis": "Naruto Uzumaki, a young ninja with a dream of becoming the Hokage, navigates friendships, battles, and his hidden powers while confronting dark forces and his own destiny.",
+    "statusName": "Completed",
+    "studio": "Pierrot",
+    "director": "Hayato Date",
+    "releaseDate": "2002-10-03",
+    "episodeCount": "220",
+    "durationPerEpisode": "23",
+    "genres": ["Action", "Adventure", "Shounen", "Supernatural", "Martial Arts"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/berserk/images/7/76/Berserk_1997_poster.jpg/revision/latest?cb=20150405235612",
+    "title": "Berserk",
+    "synopsis": "The story of Guts, a lone mercenary, and Griffith, the ambitious leader of the Band of the Hawk, as they navigate a dark and brutal medieval world filled with betrayal, war, and the supernatural.",
+    "statusName": "Completed",
+    "studio": "OLM",
+    "director": "Naohito Takahashi",
+    "releaseDate": "1997-10-07",
+    "episodeCount": "25",
+    "durationPerEpisode": "24",
+    "genres": ["Action", "Adventure", "Drama", "Fantasy", "Horror"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/dr-stone/images/6/6f/Dr_Stone_anime_visual.jpg/revision/latest?cb=20200409101036",
+    "title": "Dr. Stone",
+    "synopsis": "After a mysterious phenomenon turns humanity into stone, Senku, a genius scientist, awakens to rebuild civilization from scratch with the power of science.",
+    "statusName": "Ongoing",
+    "studio": "TMS Entertainment",
+    "director": "Shinya Iino",
+    "releaseDate": "2019-07-05",
+    "episodeCount": "35",
+    "durationPerEpisode": "24",
+    "genres": ["Adventure", "Sci-Fi", "Shounen", "Post-Apocalyptic"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/jujutsu-kaisen/images/8/82/Jujutsu_Kaisen_Anime_Key_Visual.jpg/revision/latest?cb=20200904024105",
+    "title": "Jujutsu Kaisen",
+    "synopsis": "Yuji Itadori joins the world of Jujutsu sorcerers to combat cursed spirits, after consuming a powerful cursed object and becoming their unlikely ally in the fight.",
+    "statusName": "Ongoing",
+    "studio": "MAPPA",
+    "director": "Sunghoo Park",
+    "releaseDate": "2020-10-03",
+    "episodeCount": "24",
+    "durationPerEpisode": "23",
+    "genres": ["Action", "Supernatural", "Shounen", "Fantasy"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/1/1a/Demon_Slayer_Key_Visual.jpg/revision/latest?cb=20200309112255",
+    "title": "Kimetsu no Yaiba (Demon Slayer)",
+    "synopsis": "Tanjiro Kamado, a kind-hearted boy, becomes a demon slayer to avenge his family and save his sister Nezuko, who has been transformed into a demon.",
+    "statusName": "Ongoing",
+    "studio": "ufotable",
+    "director": "Haruo Sotozaki",
+    "releaseDate": "2019-04-06",
+    "episodeCount": "26",
+    "durationPerEpisode": "24",
+    "genres": ["Action", "Supernatural", "Adventure", "Historical", "Shounen"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/chainsaw-man/images/7/73/Chainsaw_Man_Anime_Poster.jpg/revision/latest?cb=20221005013928",
+    "title": "Chainsaw Man",
+    "synopsis": "Denji, a young man burdened by debt, becomes Chainsaw Man after fusing with his pet devil Pochita. He battles devils in a chaotic and violent world.",
+    "statusName": "Ongoing",
+    "studio": "MAPPA",
+    "director": "Ryu Nakayama",
+    "releaseDate": "2022-10-12",
+    "episodeCount": "12",
+    "durationPerEpisode": "23",
+    "genres": ["Action", "Supernatural", "Horror", "Dark Fantasy"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/schooldays/images/8/88/School_Days_Visual.jpg/revision/latest?cb=20180723235012",
+    "title": "School Days",
+    "synopsis": "Makoto Itou’s romantic choices lead to a series of intense and dramatic events, unraveling a dark tale of love, betrayal, and tragedy.",
+    "statusName": "Completed",
+    "studio": "TNK",
+    "director": "Keitaro Motonaga",
+    "releaseDate": "2007-07-04",
+    "episodeCount": "12",
+    "durationPerEpisode": "24",
+    "genres": ["Drama", "Romance", "Psychological", "Slice of Life"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/overlordmaruyama/images/a/a3/Overlord_IV_Poster.jpg/revision/latest?cb=20220721134743",
+    "title": "Overlord",
+    "synopsis": "Ainz Ooal Gown, a powerful undead sorcerer, seeks to understand the new world he finds himself in after being trapped in a virtual reality game.",
+    "statusName": "Ongoing",
+    "studio": "Madhouse",
+    "director": "Naoyuki Itou",
+    "releaseDate": "2015-07-07",
+    "episodeCount": "52",
+    "durationPerEpisode": "24",
+    "genres": ["Action", "Fantasy", "Adventure", "Game", "Isekai"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/naruto/images/f/ff/Boruto_Key_Visual.jpg/revision/latest?cb=20200712110235",
+    "title": "Boruto: Naruto Next Generations",
+    "synopsis": "The story of Boruto Uzumaki, the son of Naruto, as he navigates life as a ninja in a new era, dealing with threats old and new.",
+    "statusName": "Ongoing",
+    "studio": "Pierrot",
+    "director": "Noriyuki Abe",
+    "releaseDate": "2017-04-05",
+    "episodeCount": "293",
+    "durationPerEpisode": "23",
+    "genres": ["Action", "Adventure", "Shounen", "Supernatural"]
+  },
+  {
+    "thumbnail": "https://static.wikia.nocookie.net/tokyoghoul/images/e/ef/Tokyo_Ghoul_Visual.jpg/revision/latest?cb=20171114005646",
+    "title": "Tokyo Ghoul",
+    "synopsis": "Kaneki Ken becomes a half-ghoul after a chance encounter, leading him into a world of darkness and conflict between humans and ghouls.",
+    "statusName": "Completed",
+    "studio": "Pierrot",
+    "director": "Shuhei Morita",
+    "releaseDate": "2014-07-04",
+    "episodeCount": "12",
+    "durationPerEpisode": "24",
+    "genres": ["Action", "Horror", "Supernatural", "Psychological", "Drama"]
+  }
+]
+
+### PATCH Update Anime
+PATCH http://localhost:3000/api/animes/2767ebec-bea9-48a9-a1a6-9e8fa9b79138
 Content-Type: application/json
 
 {
-    "anime":{
-        "thumbnail":"https://example.com/thumbnail/aot.jpg",
-        "title":"Boku no pico",
-        "synopsis":"Un anime para niños menores de 12 años",
-        "statusName":"Completed",
-        "studio":"Ordoñesito",
-        "director":"Felipe",
+        "title":"Ordoñesito's Anime",
+        "synopsis":"Un anime actualizado",
         "releaseDate":"2024-10-04",
-        "episodeCount":"12",
-        "durationPerEpisode":"24",
-        "genres":["Action","Comedy","Supernatural","Mystery","Sci-Fi"]
-    }
+        "durationPerEpisode":"30",
+        "genres": ["Action", "Comedy"]
 }
-
-### PATCH Update Anime
-
 ### DELETE Delete Anime
-DELETE http://localhost:3000/api/animes/a304dd8f-b42a-43d4-bb2d-f2176089853c
+DELETE http://localhost:3000/api/animes/204f2e9e-ae75-479d-a00e-f5c618f33a54

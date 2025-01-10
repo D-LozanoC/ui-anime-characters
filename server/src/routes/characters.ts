@@ -1,17 +1,18 @@
 import { Router } from "express";
 import CharacterController from "../controllers/characters.ts";
 import { CharacterModelInterface } from "../types/interfaces.ts";
+import getAnimeId from "../middlewares/getAnimeId.ts";
 
 function createCharacterRouter(characterModel: CharacterModelInterface): Router {
     const router = Router();
-    
-    const characterController = new CharacterController({model: characterModel});
-    
-    router.get("/character", characterController.getAllCharacters)
-    router.get('/character/:id', characterController.getCharacterById)
-    router.post('/character', characterController.createCharacter)
-    router.patch('/character/:id', characterController.updateCharacter)
-    router.delete('/character/:id', characterController.deleteCharacter)
+
+    const characterController = new CharacterController({ model: characterModel });
+
+    router.get("/characters", getAnimeId, characterController.getAllCharacters)
+    router.get('/characters/:id', characterController.getCharacterById)
+    router.post('/characters', getAnimeId, characterController.createCharacter, characterController.createCharacters)
+    router.patch('/characters/:id', characterController.updateCharacter)
+    router.delete('/characters/:id', characterController.deleteCharacter)
 
     return router;
 }
