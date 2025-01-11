@@ -1,4 +1,4 @@
-import express, { Application } from 'express'
+import express, { Application, Request, Response } from 'express'
 import morgan from 'morgan'
 import createAnimeRouter from './routes/anime.ts'
 import createGenresRouter from './routes/genres.ts'
@@ -17,15 +17,15 @@ const createApp = ({ animeModel, characterModel, genreModel, abilitiesModel, sta
     app.use(morgan('dev'))
     app.use(cors())
     
-    app.get('/', (_req, res) => {
+    app.get('/', (_req: Request, res: Response) => {
         res.sendFile(`${process.cwd()}/public/html/index.html`)
     })
 
-    app.get('/docs', (_req, res) => {
+    app.get('/docs', (_req: Request, res: Response) => {
         res.sendFile(`${process.cwd()}/public/html/docs.html`)
     })
     
-    app.get('/api', (_req, res) => {
+    app.get('/api', (_req: Request, res: Response) => {
         res.json({ message: "API de animes" });
     })
 

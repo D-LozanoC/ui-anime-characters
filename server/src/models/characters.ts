@@ -43,8 +43,8 @@ export default class CharacterModel implements CharacterModelInterface {
             data: {
                 ...character,
                 abilities: {
-                    set: abilities.map(genre => {
-                        return { name: genre }
+                    set: abilities.map(ability => {
+                        return { name: ability }
                     })
                 }
             }
