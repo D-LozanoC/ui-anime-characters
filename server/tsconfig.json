@@ -1,13 +1,11 @@
 {
     "compilerOptions": {
-      "target": "ES2022",
-      "module": "CommonJS",
-      "strict": false,
+      "target": "ESNext",
+      "module": "NodeNext",
+      "strict": true,
       "esModuleInterop": true,
       "outDir": "./dist",
-      "forceConsistentCasingInFileNames": true,
-      "skipLibCheck": true
+      "moduleResolution": "nodenext"
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+    "include": ["src/**/*", "./api/*.ts"]
   }

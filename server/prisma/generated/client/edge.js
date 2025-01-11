@@ -150,7 +150,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\david\\Projects\\University\\ui-anime-characters\\server\\prisma\\generated\\client",
+      "value": "C:\\Users\\david\\Projects\\University\\ui-anime-characters\\test\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -166,7 +166,7 @@ const config = {
     "previewFeatures": [
       "driverAdapters"
     ],
-    "sourceFilePath": "C:\\Users\\david\\Projects\\University\\ui-anime-characters\\server\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\david\\Projects\\University\\ui-anime-characters\\test\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
