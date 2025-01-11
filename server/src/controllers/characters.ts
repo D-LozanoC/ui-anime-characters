@@ -79,7 +79,8 @@ export default class CharacterController {
             return
         }
 
-        const createdCharacter = await this.#model.createCharacter(validation.data)
+        const { thumbnail, description, origin, birthDate, age, role, personality, background, bio, abilities } = validation.data;
+        const createdCharacter = await this.#model.createCharacter({ name, animeId, thumbnail, description, origin, birthDate, age, role, personality, background, bio, abilities });
 
         if (!createdCharacter) {
             res.status(500).end()
