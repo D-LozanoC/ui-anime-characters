@@ -1,13 +1,13 @@
 import express, { Application, Request, Response } from 'express'
 import morgan from 'morgan'
-import createAnimeRouter from './routes/anime.ts'
-import createGenresRouter from './routes/genres.ts'
-import { modelProps } from './types/props.ts'
-import { errorHandler } from './middlewares/errorHandler.ts'
-import { PORT } from './utils/config.ts'
+import createAnimeRouter from './routes/anime.js'
+import createGenresRouter from './routes/genres.js'
+import { modelProps } from './types/props.js'
+import { errorHandler } from './middlewares/errorHandler.js'
+import { PORT } from './utils/config.js'
 import cors from 'cors'
-import createStatusRouter from './routes/status.ts'
-import createAbilitiesRouter from './routes/abilities.ts'
+import createStatusRouter from './routes/status.js'
+import createAbilitiesRouter from './routes/abilities.js'
 
 const createApp = ({ animeModel, characterModel, genreModel, abilitiesModel, statusModel }: modelProps): Application => {
     const app = express()

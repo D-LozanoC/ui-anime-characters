@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express"
-import { capitalizeWords } from "../utils/capitalizeWords.ts";
-import { queryProps } from "../types/props.ts";
-import createCustomError from "../utils/customError.ts";
-import { validateCharacter, validatePartialCharacter } from "../validators/characters.ts";
-import { CharacterModelInterface } from "../types/interfaces.ts";
-import prismaClient from "../utils/connector.ts";
+import { capitalizeWords } from "../utils/capitalizeWords.js";
+import { queryProps } from "../types/props.js";
+import createCustomError from "../utils/customError.js";
+import { validateCharacter, validatePartialCharacter } from "../validators/characters.js";
+import { CharacterModelInterface } from "../types/interfaces.js";
+import prismaClient from "../utils/connector.js";
 import { Character } from "@prisma/client";
 import { SafeParseReturnType } from "zod";
 

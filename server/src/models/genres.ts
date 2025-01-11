@@ -1,6 +1,6 @@
 import { Genre } from "@prisma/client";
-import { GenresModelInterface } from "../types/interfaces.ts";
-import prismaClient from "../utils/connector.ts";
+import { GenresModelInterface } from "../types/interfaces.js";
+import prismaClient from "../utils/connector.js";
 
 export default class GenresModel implements GenresModelInterface {
     async getAllGenres(): Promise<string[] | null> {

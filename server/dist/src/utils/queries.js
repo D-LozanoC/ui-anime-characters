@@ -1,8 +1,5 @@
-import { Query } from "../types/interfaces.js"
-import { queryProps } from "../types/props.js"
-
-const buildFindManyQuery = ({ genres, statusName, order, page, pageSize, animeId, abilities, title, name }: queryProps) => {
-    const query: Query = {
+const buildFindManyQuery = ({ genres, statusName, order, page, pageSize, animeId, abilities, title, name }) => {
+    const query = {
         where: {},
         orderBy: {},
         skip: undefined,
@@ -10,8 +7,7 @@ const buildFindManyQuery = ({ genres, statusName, order, page, pageSize, animeId
         include: {
             genres: true
         },
-    }
-
+    };
     if (genres) {
         query.where = {
             genres: {
@@ -21,27 +17,24 @@ const buildFindManyQuery = ({ genres, statusName, order, page, pageSize, animeId
                     }
                 }
             }
-        }
+        };
     }
-
-    if (name){
+    if (name) {
         query.where = {
             ...query.where,
             name: {
                 contains: name
             }
-        }
+        };
     }
-
     if (title) {
         query.where = {
             ...query.where,
             title: {
                 contains: title
             }
-        }
+        };
     }
-
     if (abilities) {
         query.where = {
             abilities: {
@@ -51,44 +44,39 @@ const buildFindManyQuery = ({ genres, statusName, order, page, pageSize, animeId
                     }
                 }
             }
-        }
+        };
     }
-
     if (animeId) {
         query.include = {
             abilities: true
-        }
+        };
         query.where = {
             ...query.where,
             animeId
-        }
+        };
     }
-    
     if (statusName) {
         query.where = {
             ...query.where,
             statusName
-        }
+        };
     }
-    
     if (order === 'desc' || order === 'asc') {
-        if (animeId){
+        if (animeId) {
             query.orderBy = {
                 name: order
-            }
-        } else{
+            };
+        }
+        else {
             query.orderBy = {
                 title: order
-            }
+            };
         }
     }
-    
     if (page && pageSize) {
-        query.skip = (page - 1) * pageSize
-        query.take = pageSize
+        query.skip = (page - 1) * pageSize;
+        query.take = pageSize;
     }
-    
     return query;
-}
-
-export { buildFindManyQuery }
+};
+export { buildFindManyQuery };

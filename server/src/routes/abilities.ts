@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AbilitiesModelInterface } from "../types/interfaces.ts";
-import AbilitiesController from "../controllers/abilities.ts";
+import { AbilitiesModelInterface } from "../types/interfaces.js";
+import AbilitiesController from "../controllers/abilities.js";
 
 function createAbilitiesRouter(abilitiesModel: AbilitiesModelInterface): Router {
     const router = Router();

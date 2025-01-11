@@ -1,5 +1,5 @@
 import { Anime, Character } from "@prisma/client";
-import { queryProps } from "./props.ts";
+import { queryProps } from "./props.js";
 import { Request } from "express";
 
 export interface GenresModelInterface {

@@ -1,6 +1,6 @@
 import { Abilities } from "@prisma/client";
-import { AbilitiesModelInterface } from "../types/interfaces.ts";
-import prismaClient from "../utils/connector.ts";
+import { AbilitiesModelInterface } from "../types/interfaces.js";
+import prismaClient from "../utils/connector.js";
 
 export default class AbilitiesModel implements AbilitiesModelInterface {
     async getAllAbilities(): Promise<string[] | null> {

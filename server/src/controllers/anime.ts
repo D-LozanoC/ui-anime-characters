@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { AnimeModelInterface } from "../types/interfaces.ts";
-import createCustomError from "../utils/customError.ts";
-import { queryProps } from "../types/props.ts";
-import { capitalizeWord, capitalizeWords } from "../utils/capitalizeWords.ts";
-import { validateAnime, validatePartialAnime } from "../validators/anime.ts";
+import { AnimeModelInterface } from "../types/interfaces.js";
+import createCustomError from "../utils/customError.js";
+import { queryProps } from "../types/props.js";
+import { capitalizeWord, capitalizeWords } from "../utils/capitalizeWords.js";
+import { validateAnime, validatePartialAnime } from "../validators/anime.js";
 import { Anime } from "@prisma/client";
 
 export default class AnimeController {

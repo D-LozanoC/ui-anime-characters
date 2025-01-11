@@ -1,7 +1,7 @@
 import { Router } from "express";
-import CharacterController from "../controllers/characters.ts";
-import { CharacterModelInterface } from "../types/interfaces.ts";
-import getAnimeId from "../middlewares/getAnimeId.ts";
+import CharacterController from "../controllers/characters.js";
+import { CharacterModelInterface } from "../types/interfaces.js";
+import getAnimeId from "../middlewares/getAnimeId.js";
 
 function createCharacterRouter(characterModel: CharacterModelInterface): Router {
     const router = Router();

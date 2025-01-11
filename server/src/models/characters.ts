@@ -1,8 +1,8 @@
 import { Character } from "@prisma/client"
-import { CharacterModelInterface } from "../types/interfaces.ts"
-import { queryProps } from "../types/props.ts"
-import prismaClient from "../utils/connector.ts"
-import { buildFindManyQuery } from "../utils/queries.ts"
+import { CharacterModelInterface } from "../types/interfaces.js"
+import { queryProps } from "../types/props.js"
+import prismaClient from "../utils/connector.js"
+import { buildFindManyQuery } from "../utils/queries.js"
 
 export default class CharacterModel implements CharacterModelInterface {
     async getAllCharacters(animeId: string, query: queryProps): Promise<Character[]> {
