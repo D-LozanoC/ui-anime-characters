@@ -1,5 +1,5 @@
 import { Router } from "express";
-import GenresController from "../controllers/genres.ts";
+import GenresController from "../controllers/genres.js";
 function createGenresRouter(genresModel) {
     const router = Router();
     const genresController = new GenresController({ model: genresModel });

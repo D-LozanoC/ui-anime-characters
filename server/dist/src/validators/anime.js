@@ -1,5 +1,5 @@
 import z from 'zod';
-import { CharacterSchema } from './characters.ts';
+import { CharacterSchema } from './characters.js';
 const AnimeSchema = z.object({
     thumbnail: z.string().url({ message: "Thumbnail must be a valid URL." }),
     title: z.string().min(1, { message: "Title is required and cannot be empty." }),

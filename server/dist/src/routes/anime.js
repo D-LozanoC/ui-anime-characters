@@ -1,6 +1,6 @@
 import { Router } from "express";
-import AnimeController from "../controllers/anime.ts";
-import createCharacterRouter from "./characters.ts";
+import AnimeController from "../controllers/anime.js";
+import createCharacterRouter from "./characters.js";
 function createAnimeRouter({ animeModel, characterModel }) {
     const router = Router();
     const animeController = new AnimeController({ model: animeModel });

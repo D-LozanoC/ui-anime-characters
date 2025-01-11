@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { AbilitiesModelInterface } from "../types/interfaces.ts";
+import { AbilitiesModelInterface } from "../types/interfaces.js";
 export default class AbilitiesController {
     #private;
     constructor({ model }: {

@@ -1,6 +1,6 @@
-import createCustomError from "../utils/customError.ts";
-import { capitalizeWord, capitalizeWords } from "../utils/capitalizeWords.ts";
-import { validateAnime, validatePartialAnime } from "../validators/anime.ts";
+import createCustomError from "../utils/customError.js";
+import { capitalizeWord, capitalizeWords } from "../utils/capitalizeWords.js";
+import { validateAnime, validatePartialAnime } from "../validators/anime.js";
 export default class AnimeController {
     #model;
     constructor({ model }) {

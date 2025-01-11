@@ -1,6 +1,6 @@
 import { Anime } from "@prisma/client";
-import { AnimeModelInterface } from "../types/interfaces.ts";
-import { queryProps } from "../types/props.ts";
+import { AnimeModelInterface } from "../types/interfaces.js";
+import { queryProps } from "../types/props.js";
 export default class AnimeModel implements AnimeModelInterface {
     getAllAnimes(filters: queryProps): Promise<Anime[]>;
     getAnimeById(id: string): Promise<Anime | null>;

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { AnimeModelInterface } from "../types/interfaces.ts";
+import { AnimeModelInterface } from "../types/interfaces.js";
 export default class AnimeController {
     #private;
     constructor({ model }: {

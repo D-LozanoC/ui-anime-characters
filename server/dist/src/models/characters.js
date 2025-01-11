@@ -1,5 +1,5 @@
-import prismaClient from "../utils/connector.ts";
-import { buildFindManyQuery } from "../utils/queries.ts";
+import prismaClient from "../utils/connector.js";
+import { buildFindManyQuery } from "../utils/queries.js";
 export default class CharacterModel {
     async getAllCharacters(animeId, query) {
         return prismaClient.character.findMany(buildFindManyQuery({ ...query, animeId }));

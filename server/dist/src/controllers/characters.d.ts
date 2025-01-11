@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { CharacterModelInterface } from "../types/interfaces.ts";
+import { CharacterModelInterface } from "../types/interfaces.js";
 export default class CharacterController {
     #private;
     constructor({ model }: {

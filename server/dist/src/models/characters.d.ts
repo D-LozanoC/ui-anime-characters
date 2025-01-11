@@ -1,6 +1,6 @@
 import { Character } from "@prisma/client";
-import { CharacterModelInterface } from "../types/interfaces.ts";
-import { queryProps } from "../types/props.ts";
+import { CharacterModelInterface } from "../types/interfaces.js";
+import { queryProps } from "../types/props.js";
 export default class CharacterModel implements CharacterModelInterface {
     getAllCharacters(animeId: string, query: queryProps): Promise<Character[]>;
     getCharacterById(id: string): Promise<Character | null>;

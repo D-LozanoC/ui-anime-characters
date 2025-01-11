@@ -1,4 +1,4 @@
-export const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err, _req, res, next) => {
     if (err.name === 'ZodError') {
         res.json(err);
     }

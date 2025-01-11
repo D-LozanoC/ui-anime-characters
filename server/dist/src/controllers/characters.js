@@ -1,7 +1,7 @@
-import { capitalizeWords } from "../utils/capitalizeWords.ts";
-import createCustomError from "../utils/customError.ts";
-import { validateCharacter, validatePartialCharacter } from "../validators/characters.ts";
-import prismaClient from "../utils/connector.ts";
+import { capitalizeWords } from "../utils/capitalizeWords.js";
+import createCustomError from "../utils/customError.js";
+import { validateCharacter, validatePartialCharacter } from "../validators/characters.js";
+import prismaClient from "../utils/connector.js";
 export default class CharacterController {
     #model;
     constructor({ model }) {
