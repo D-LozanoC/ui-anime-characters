@@ -1,4 +1,4 @@
-import { Status } from "@prisma/client";
+import { Status } from '../../prisma/generated/client'
 import { StatusModelInterface } from "../types/interfaces.js";
 import prismaClient from "../utils/connector.js";
 

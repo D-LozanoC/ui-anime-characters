@@ -5,7 +5,7 @@ import createCustomError from "../utils/customError.js";
 import { validateCharacter, validatePartialCharacter } from "../validators/characters.js";
 import { CharacterModelInterface } from "../types/interfaces.js";
 import prismaClient from "../utils/connector.js";
-import { Character } from "@prisma/client";
+import { Character } from '../../prisma/generated/client'
 import { SafeParseReturnType } from "zod";
 
 export default class CharacterController {

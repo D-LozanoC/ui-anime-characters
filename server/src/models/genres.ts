@@ -1,4 +1,4 @@
-import { Genre } from "@prisma/client";
+import { Genre } from '../../prisma/generated/client'
 import { GenresModelInterface } from "../types/interfaces.js";
 import prismaClient from "../utils/connector.js";
 

@@ -1,4 +1,4 @@
-import { Anime, Character } from "@prisma/client";
+import { Anime, Character } from '../../prisma/generated/client'
 import { queryProps } from "./props.js";
 import { Request } from "express";
 

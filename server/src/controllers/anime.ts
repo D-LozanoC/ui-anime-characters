@@ -4,7 +4,6 @@ import createCustomError from "../utils/customError.js";
 import { queryProps } from "../types/props.js";
 import { capitalizeWord, capitalizeWords } from "../utils/capitalizeWords.js";
 import { validateAnime, validatePartialAnime } from "../validators/anime.js";
-import { Anime } from "@prisma/client";
 
 export default class AnimeController {
     #model

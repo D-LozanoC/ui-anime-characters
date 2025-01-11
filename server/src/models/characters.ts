@@ -1,4 +1,4 @@
-import { Character } from "@prisma/client"
+import { Character } from '../../prisma/generated/client'
 import { CharacterModelInterface } from "../types/interfaces.js"
 import { queryProps } from "../types/props.js"
 import prismaClient from "../utils/connector.js"

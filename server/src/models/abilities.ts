@@ -1,4 +1,4 @@
-import { Abilities } from "@prisma/client";
+import { Abilities } from '../../prisma/generated/client'
 import { AbilitiesModelInterface } from "../types/interfaces.js";
 import prismaClient from "../utils/connector.js";
 
