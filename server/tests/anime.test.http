@@ -3,7 +3,8 @@ GET http://localhost:3001/api/animes
 ### GET Animes by Genres or Status
 GET http://localhost:3000/api/animes?genres=action,fantasy&status=ongoing
 ### GET Animes by Title
-GET http://localhost:3000/api/animes?title=ñ
+GET http://localhost:3001/api/animes?title=hunter
+
 ### GET Animes Sorting and Pagination
 GET http://localhost:3000/api/animes?order=asc&pageSize=2&page=1
 ### GET Animes by ID

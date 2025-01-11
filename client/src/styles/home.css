@@ -1,19 +1,68 @@
-
 .home-container {
     text-align: center;
-    padding: 20px;
+}
+
+.starter {
+    display: flex;
+    flex-direction: row;
 }
 
 .hero {
-    background: linear-gradient(135deg, var(--main-color), var(--secondary-color));
+    background: linear-gradient(to bottom, var(--main-color), var(--secondary-color));
     color: #fff;
-    padding: 60px 20px;
-    border-radius: 10px;
+    padding: 0;
+    height: 92vh;
+    padding-top: 8vh;
 }
+
+.perspective-container {
+    perspective: 1000px;
+    /* Habilita la perspectiva 3D */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    width: 90%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.row img {
+    width: auto;
+    height: 20rem;
+    object-fit: cover;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.row.left img {
+    transform: rotateY(45deg) translateX(-2rem);
+    /* Perspectiva hacia la izquierda */
+}
+
+.row.right img {
+    transform: rotateY(-45deg) translateX(2rem);
+    /* Perspectiva hacia la derecha */
+}
+
+.title {
+    font-size: 2.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.perspective-container:hover .row img {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
 
 .hero h1 {
     font-size: 3rem;
-    margin-bottom: 20px;
+    margin: 0;
 }
 
 .hero p {

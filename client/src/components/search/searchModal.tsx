@@ -3,7 +3,7 @@ import { Dispatch, forwardRef, SetStateAction, useEffect, useImperativeHandle, u
 import SearchModalForm from "./searchModalForm"
 import Link from "next/link"
 import { Character } from "@/types/character"
-import { isAnime, isCharacter } from "@/utils/isData"
+import { isAnime, isArrayObject, isArrayString, isCharacter } from "@/utils/isData"
 
 type modalProps = {
     data: Anime | Character | undefined,
@@ -17,6 +17,7 @@ const SearchModal = forwardRef((props: modalProps, ref) => {
     const dialogRef = useRef<HTMLDialogElement>(null)
     const data = props.data
     const [toUpdate, setToUpdate] = useState<boolean>(false)
+    const [isAbilities, setIsAbilities] = useState<boolean>(false)
 
     useImperativeHandle(ref, () => {
         return {
@@ -74,11 +75,13 @@ const SearchModal = forwardRef((props: modalProps, ref) => {
         if (props.toUpdate) {
             onClose()
         }
+        console.log(isAbilities);
 
     }, [props.toDelete, props.toUpdate]);
 
     const onClose = () => {
         setToUpdate(false)
+        setIsAbilities(false)
         dialogRef.current?.close()
     }
 
@@ -86,7 +89,7 @@ const SearchModal = forwardRef((props: modalProps, ref) => {
         let title
         if (isAnime(data)) {
             title = 'anime'
-        } else if (isCharacter(data)){
+        } else if (isCharacter(data)) {
             title = 'personaje'
         }
         if (confirm(`¿Esta seguro de borrar el ${title}?`)) {
@@ -107,6 +110,10 @@ const SearchModal = forwardRef((props: modalProps, ref) => {
 
     if (!data) {
         return
+    }
+
+    const onSeeAbilitiesHandle = () => {
+        setIsAbilities((prev) => !prev)
     }
 
     return (
@@ -162,29 +169,43 @@ const SearchModal = forwardRef((props: modalProps, ref) => {
                             (
                                 <div className="searchModal">
                                     <img src={data.thumbnail} alt="data" />
-                                    <div className="modalCharacterInfo">
-                                        <h1>{data.name}</h1>
-
-                                        <span>
-                                            <div className="tags">
-                                                {data.abilities.map((ability) => {
-                                                    if (typeof ability === 'object' && 'name' in ability) {
+                                    <div className="modalCharacterInfo ">
+                                        <h1 className={isAbilities ? "abilitiesTrue" : ""}>{data.name}</h1>
+                                        <small className={isAbilities ? "abilitiesTrue" : ""}>{data.birthDate + ', ' + data.age}</small>
+                                        <p className={isAbilities ? "abilitiesTrue" : ""}>{data.description}</p>
+                                        <p className={isAbilities ? "abilitiesTrue" : ""}>{data.bio}</p>
+                                        <p className={isAbilities ? "abilitiesTrue" : ""}>{data.background}</p>
+                                        <p className={isAbilities ? "abilitiesTrue" : ""}>{data.personality}</p>
+                                        <p className={isAbilities ? "abilitiesTrue" : ""}>{data.role}</p>
+                                        <table className={isAbilities ? "abilities" : "abilitiesTrue"}>
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Descripción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    data.abilities.map((ability) => {
+                                                        const idx = crypto.randomUUID()
                                                         return (
-                                                            <small key={ability.name + data.name} className="tag">{ability?.name}</small>
+                                                            <tr key={ability + idx} className="ability">
+                                                                <td>{(ability as { name: string }).name}</td>
+                                                                <td>{(ability as { description: string }).description}</td>
+                                                            </tr>
                                                         )
-                                                    }
-                                                    return (<></>)
-                                                })}
-                                            </div>
-                                        </span>
-
+                                                    })
+                                                }
+                                            </tbody>
+                                        </table>
                                         <div className="modalButtons">
-                                            <button className="update" onClick={onUpdateHandle}>Update</button>
-                                            <button className="delete" onClick={onDeleteHandle}>Delete</button>
+                                            <button className={isAbilities ? "abilitiesTrue" : "update"} onClick={onUpdateHandle}>Update</button>
+                                            <button className={isAbilities ? "abilitiesTrue" : "delete"} onClick={onDeleteHandle}>Delete</button>
+                                            <button className="see" onClick={onSeeAbilitiesHandle}>{isAbilities ? "Regresar" : "Habilidades"}</button>
                                         </div>
                                         <span className="statusContainer">
-                                            <p>{data.role}</p>
-                                            <span className={`statusName status-${data.role.toLowerCase()}`} />
+                                            <p>{data.origin}</p>
+                                            <span className={`statusName origin`} />
                                         </span>
                                     </div>
                                 </div>

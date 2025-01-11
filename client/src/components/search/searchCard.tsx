@@ -1,6 +1,7 @@
 import { Anime } from "@/types/anime";
 import { Character } from "@/types/character";
 import { isAnime } from "@/utils/isData";
+import Image from "next/image";
 
 type cardProps = {
     data: Anime | Character,
@@ -16,7 +17,7 @@ export default function SearchCard({ data, handleClick }: cardProps) {
                     ?
                     <div className="card" onClick={handleClick}>
                         <div className="card-cover">
-                            <img src={data.thumbnail} alt=""></img>
+                            <img src={data.thumbnail} alt={data.title}></img>
                         </div>
                         <div className="card-info">
                             <p className="title">{data.title}</p>
@@ -29,7 +30,7 @@ export default function SearchCard({ data, handleClick }: cardProps) {
                     :
                     <div className="card" onClick={handleClick}>
                         <div className="card-cover">
-                            <img src={data.thumbnail} alt=""></img>
+                            <img src={data.thumbnail} alt={data.name}></img>
                         </div>
                         <div className="card-info">
                             <p className="title">{data.name}</p>

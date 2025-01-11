@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import '../styles/header.css'
+import GitHubIco from './icons/GitHubIco'
+import LinkedinIco from './icons/LinkedinIco'
 
 export default function () {
     return (
@@ -15,6 +17,18 @@ export default function () {
                     </li>
                     <li>
                         <Link href="/contacto">Contacto</Link>
+                    </li>
+                    <li>
+                        <a href="https://github.com/D-LozanoC" target="_blank" rel="noopener noreferrer">
+                            <GitHubIco color='#eee' h='30' w='30' />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/david-lozano-clavijo/" target="_blank" rel="noopener noreferrer">
+                            <LinkedinIco color='#eee' w='30' h='30' />
+                        </a>
+                    </li>
+                    <li>
                     </li>
                 </ul>
             </nav>

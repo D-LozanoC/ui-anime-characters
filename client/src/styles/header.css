@@ -2,31 +2,42 @@
 
 header {
     color: var(--text-color-light);
-    height: 4rem;
-    padding: .4rem 2rem;
+    height: 8vh;
+    padding: 0 2rem;
     background-color: var(--main-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
     ul {
         display: flex;
         list-style: none;
+        align-items: center;
         margin: 0;
         padding: 0;
+        gap: 1rem;
     }
+
     li {
-        margin: 0 10px;
+        transition: all ease 300ms;
+
+        &:hover {
+            transform: scale(1.2);
+        }
     }
+
     a {
         color: var(--text-color-light);
         text-decoration: none;
         transition: all ease 200ms;
-        &:hover{
+
+        &:hover {
             color: #ffffff;
             text-decoration: underline;
         }

@@ -79,12 +79,13 @@ export default function SearchModalForm(params: modalFormProps) {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
+
         if (selectedGenres && isAnime(formData)) {
             params.setDataToUpdate({ ...formData, genres: selectedGenres.map(genre => (genre.value)) })
         }
 
         if (selectedAbilities && isCharacter(formData)) {
-            params.setDataToUpdate({ ...formData, abilities: selectedAbilities.map(genre => (genre.value)) })
+            params.setDataToUpdate({ ...formData, abilities: selectedAbilities.map(ability => (ability.value)) })
         }
 
         params.setToUpdate(false)
