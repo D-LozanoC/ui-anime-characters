@@ -47,6 +47,4 @@ app.use((_req: Request, res: Response) => {
 })
 app.use(errorHandler)
 
-app.listen(PORT)
-
 export default app
