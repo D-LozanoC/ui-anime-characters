@@ -1,17 +1,22 @@
-import prismaClient from "../utils/connector.js";
-import { buildFindManyQuery } from "../utils/queries.js";
-export default class AnimeModel {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const connector_js_1 = __importDefault(require("../utils/connector.js"));
+const queries_js_1 = require("../utils/queries.js");
+class AnimeModel {
     getAllAnimes(filters) {
-        return prismaClient.anime.findMany(buildFindManyQuery(filters));
+        return connector_js_1.default.anime.findMany((0, queries_js_1.buildFindManyQuery)(filters));
     }
     getAnimeById(id) {
-        return prismaClient.anime.findUnique({ where: { id }, include: { genres: true } });
+        return connector_js_1.default.anime.findUnique({ where: { id }, include: { genres: true } });
     }
     getAnimeByTitle(title) {
-        return prismaClient.anime.findUnique({ where: { title } });
+        return connector_js_1.default.anime.findUnique({ where: { title } });
     }
     async createAnime(anime, genres) {
-        await prismaClient.anime.create({
+        await connector_js_1.default.anime.create({
             data: {
                 ...anime,
                 genres: {
@@ -21,10 +26,10 @@ export default class AnimeModel {
         });
     }
     async updateAnime(anime) {
-        await prismaClient.anime.update({ where: { id: anime.id }, data: { ...anime } });
+        await connector_js_1.default.anime.update({ where: { id: anime.id }, data: { ...anime } });
     }
     async updateAnimeAndGenres(anime, genres) {
-        await prismaClient.anime.update({
+        await connector_js_1.default.anime.update({
             where: {
                 id: anime.id
             },
@@ -39,6 +44,7 @@ export default class AnimeModel {
         });
     }
     async deleteAnime(id) {
-        await prismaClient.anime.delete({ where: { id } });
+        await connector_js_1.default.anime.delete({ where: { id } });
     }
 }
+exports.default = AnimeModel;

@@ -1,11 +1,13 @@
-import { PrismaClient } from '@prisma/client';
-import { PrismaLibSQL } from '@prisma/adapter-libsql';
-import { createClient } from '@libsql/client';
-import { TURSO_AUTH_TOKEN, TURSO_DATABASE_URL } from './config.js';
-const tursoClient = createClient({
-    url: TURSO_DATABASE_URL,
-    authToken: TURSO_AUTH_TOKEN
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const client_1 = require("@prisma/client");
+const adapter_libsql_1 = require("@prisma/adapter-libsql");
+const client_2 = require("@libsql/client");
+const config_js_1 = require("./config.js");
+const tursoClient = (0, client_2.createClient)({
+    url: config_js_1.TURSO_DATABASE_URL,
+    authToken: config_js_1.TURSO_AUTH_TOKEN
 });
-const adapter = new PrismaLibSQL(tursoClient);
-const prismaClient = new PrismaClient({ adapter });
-export default prismaClient;
+const adapter = new adapter_libsql_1.PrismaLibSQL(tursoClient);
+const prismaClient = new client_1.PrismaClient({ adapter });
+exports.default = prismaClient;

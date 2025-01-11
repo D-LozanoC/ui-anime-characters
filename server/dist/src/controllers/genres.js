@@ -1,4 +1,6 @@
-export default class GenresController {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class GenresController {
     #model;
     constructor({ model }) {
         this.#model = model;
@@ -13,3 +15,4 @@ export default class GenresController {
         }
     };
 }
+exports.default = GenresController;

@@ -1,23 +1,31 @@
-import z from 'zod';
-export const CharacterSchema = z.object({
-    animeId: z.string().uuid(),
-    name: z.string(),
-    description: z.string(),
-    origin: z.string(),
-    birthDate: z.string(),
-    age: z.string(),
-    abilities: z.array(z.string()),
-    relations: z.array(z.string().uuid()).optional(),
-    relatedTo: z.array(z.string().uuid()).optional(),
-    role: z.string(),
-    personality: z.string(),
-    background: z.string(),
-    bio: z.string(),
-    thumbnail: z.string().url(),
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CharacterSchema = void 0;
+exports.validateCharacter = validateCharacter;
+exports.validatePartialCharacter = validatePartialCharacter;
+const zod_1 = __importDefault(require("zod"));
+exports.CharacterSchema = zod_1.default.object({
+    animeId: zod_1.default.string().uuid(),
+    name: zod_1.default.string(),
+    description: zod_1.default.string(),
+    origin: zod_1.default.string(),
+    birthDate: zod_1.default.string(),
+    age: zod_1.default.string(),
+    abilities: zod_1.default.array(zod_1.default.string()),
+    relations: zod_1.default.array(zod_1.default.string().uuid()).optional(),
+    relatedTo: zod_1.default.array(zod_1.default.string().uuid()).optional(),
+    role: zod_1.default.string(),
+    personality: zod_1.default.string(),
+    background: zod_1.default.string(),
+    bio: zod_1.default.string(),
+    thumbnail: zod_1.default.string().url(),
 });
-export function validateCharacter(character) {
-    return CharacterSchema.safeParse(character);
+function validateCharacter(character) {
+    return exports.CharacterSchema.safeParse(character);
 }
-export function validatePartialCharacter(character) {
-    return CharacterSchema.partial().safeParse(character);
+function validatePartialCharacter(character) {
+    return exports.CharacterSchema.partial().safeParse(character);
 }

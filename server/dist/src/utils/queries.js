@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.buildFindManyQuery = void 0;
 const buildFindManyQuery = ({ genres, statusName, order, page, pageSize, animeId, abilities, title, name }) => {
     const query = {
         where: {},
@@ -79,4 +82,4 @@ const buildFindManyQuery = ({ genres, statusName, order, page, pageSize, animeId
     }
     return query;
 };
-export { buildFindManyQuery };
+exports.buildFindManyQuery = buildFindManyQuery;

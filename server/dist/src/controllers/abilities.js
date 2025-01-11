@@ -1,4 +1,6 @@
-export default class AbilitiesController {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class AbilitiesController {
     #model;
     constructor({ model }) {
         this.#model = model;
@@ -13,3 +15,4 @@ export default class AbilitiesController {
         }
     };
 }
+exports.default = AbilitiesController;

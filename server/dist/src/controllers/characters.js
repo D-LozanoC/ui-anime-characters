@@ -1,8 +1,13 @@
-import { capitalizeWords } from "../utils/capitalizeWords.js";
-import createCustomError from "../utils/customError.js";
-import { validateCharacter, validatePartialCharacter } from "../validators/characters.js";
-import prismaClient from "../utils/connector.js";
-export default class CharacterController {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const capitalizeWords_js_1 = require("../utils/capitalizeWords.js");
+const customError_js_1 = __importDefault(require("../utils/customError.js"));
+const characters_js_1 = require("../validators/characters.js");
+const connector_js_1 = __importDefault(require("../utils/connector.js"));
+class CharacterController {
     #model;
     constructor({ model }) {
         this.#model = model;
@@ -10,11 +15,11 @@ export default class CharacterController {
     getAllCharacters = async (req, res, next) => {
         const animeId = req.body?.animeId;
         if (!animeId) {
-            next(createCustomError('AnimeIdNotProvidedError', 'No se ha proporcionado un id de anime'));
+            next((0, customError_js_1.default)('AnimeIdNotProvidedError', 'No se ha proporcionado un id de anime'));
             return;
         }
         const filters = {
-            abilities: req.query.abilities ? capitalizeWords(req.query.abilities.split(',')) : undefined,
+            abilities: req.query.abilities ? (0, capitalizeWords_js_1.capitalizeWords)(req.query.abilities.split(',')) : undefined,
             order: req.query.order,
             page: parseInt(req.query.page),
             pageSize: parseInt(req.query.pageSize),
@@ -26,7 +31,7 @@ export default class CharacterController {
         const id = req.params.id;
         const anime = await this.#model.getCharacterById(id);
         if (!anime) {
-            const error = createCustomError('CharacterNotFoundError', `No hay ningún Personaje con el id: ${id}`);
+            const error = (0, customError_js_1.default)('CharacterNotFoundError', `No hay ningún Personaje con el id: ${id}`);
             res.status(400);
             next(error);
             return;
@@ -40,17 +45,17 @@ export default class CharacterController {
         }
         const name = req.body.name;
         const animeId = req.body.animeId;
-        if (!await prismaClient.anime.findUniqueOrThrow({ where: { id: animeId } })
-            .catch(() => next(createCustomError('AnimeNotFoundError', 'No se ha encontrado el anime')))) {
+        if (!await connector_js_1.default.anime.findUniqueOrThrow({ where: { id: animeId } })
+            .catch(() => next((0, customError_js_1.default)('AnimeNotFoundError', 'No se ha encontrado el anime')))) {
             res.status(400).end();
             return;
         }
         if (await this.#model.getCharacterByName(name)) {
             res.status(409);
-            next(createCustomError('CharacterAlreadyExistsError', `Ya existe un personaje con el nombre: ${name}`));
+            next((0, customError_js_1.default)('CharacterAlreadyExistsError', `Ya existe un personaje con el nombre: ${name}`));
             return;
         }
-        const validation = validateCharacter(req.body);
+        const validation = (0, characters_js_1.validateCharacter)(req.body);
         if (!validation.success) {
             res.status(400);
             next(validation.error);
@@ -59,7 +64,7 @@ export default class CharacterController {
         const createdCharacter = await this.#model.createCharacter(validation.data);
         if (!createdCharacter) {
             res.status(500).end();
-            next(createCustomError('CharacterCreationError', 'Ha ocurrido un error al crear el personaje'));
+            next((0, customError_js_1.default)('CharacterCreationError', 'Ha ocurrido un error al crear el personaje'));
             return;
         }
         res.status(201).json({
@@ -70,8 +75,8 @@ export default class CharacterController {
     createCharacters = async (req, res, next) => {
         const characters = req.body;
         const animeId = req.body.animeId;
-        if (!await prismaClient.anime.findUniqueOrThrow({ where: { id: animeId } })
-            .catch(() => next(createCustomError('AnimeNotFoundError', 'No se ha encontrado el anime')))) {
+        if (!await connector_js_1.default.anime.findUniqueOrThrow({ where: { id: animeId } })
+            .catch(() => next((0, customError_js_1.default)('AnimeNotFoundError', 'No se ha encontrado el anime')))) {
             res.status(400).end();
             return;
         }
@@ -82,7 +87,7 @@ export default class CharacterController {
                 thumbnail, personality, background, bio, abilities
             };
         });
-        const validations = charactersToCreate.map((character) => validateCharacter(character));
+        const validations = charactersToCreate.map((character) => (0, characters_js_1.validateCharacter)(character));
         validations.forEach(async (validation) => {
             if (validation.success) {
                 return await this.#model.createCharacter(validation.data);
@@ -101,12 +106,12 @@ export default class CharacterController {
         const id = req.params.id;
         const character = await this.#model.getCharacterById(id);
         if (!character) {
-            const error = createCustomError('CharacterNotFoundError', `No hay ningún personaje con el id: ${id}`);
+            const error = (0, customError_js_1.default)('CharacterNotFoundError', `No hay ningún personaje con el id: ${id}`);
             res.status(400);
             next(error);
             return;
         }
-        const result = validatePartialCharacter(req.body);
+        const result = (0, characters_js_1.validatePartialCharacter)(req.body);
         if (!result.success) {
             res.status(400);
             next(result.error);
@@ -117,7 +122,7 @@ export default class CharacterController {
             ...result.data
         };
         if (newCharacter.abilities) {
-            await this.#model.updateCharacterAndAbilities(newCharacter, capitalizeWords(newCharacter.abilities));
+            await this.#model.updateCharacterAndAbilities(newCharacter, (0, capitalizeWords_js_1.capitalizeWords)(newCharacter.abilities));
         }
         else {
             await this.#model.updateCharacter(newCharacter);
@@ -128,7 +133,7 @@ export default class CharacterController {
         const id = req.params.id;
         const character = await this.#model.getCharacterById(id);
         if (!character) {
-            const error = createCustomError('CharacterNotFoundError', `No hay ningún personaje con el id: ${id}`);
+            const error = (0, customError_js_1.default)('CharacterNotFoundError', `No hay ningún personaje con el id: ${id}`);
             res.status(400);
             next(error);
             return;
@@ -137,3 +142,4 @@ export default class CharacterController {
         res.status(204).json({ message: "Anime successfully deleted", data: character }).end();
     };
 }
+exports.default = CharacterController;

@@ -1,7 +1,13 @@
-import prismaClient from "../utils/connector.js";
-export default class StatusModel {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const connector_js_1 = __importDefault(require("../utils/connector.js"));
+class StatusModel {
     async getAllStatus() {
-        const status = await prismaClient.status.findMany();
+        const status = await connector_js_1.default.status.findMany();
         return status.map((status) => status.name);
     }
 }
+exports.default = StatusModel;

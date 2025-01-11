@@ -1,17 +1,22 @@
-import prismaClient from "../utils/connector.js";
-import { buildFindManyQuery } from "../utils/queries.js";
-export default class CharacterModel {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const connector_js_1 = __importDefault(require("../utils/connector.js"));
+const queries_js_1 = require("../utils/queries.js");
+class CharacterModel {
     async getAllCharacters(animeId, query) {
-        return prismaClient.character.findMany(buildFindManyQuery({ ...query, animeId }));
+        return connector_js_1.default.character.findMany((0, queries_js_1.buildFindManyQuery)({ ...query, animeId }));
     }
     async getCharacterById(id) {
-        return await prismaClient.character.findUnique({ where: { id } });
+        return await connector_js_1.default.character.findUnique({ where: { id } });
     }
     async getCharacterByName(name) {
-        return await prismaClient.character.findUnique({ where: { name } });
+        return await connector_js_1.default.character.findUnique({ where: { name } });
     }
     async createCharacter(character) {
-        return await prismaClient.character.create({
+        return await connector_js_1.default.character.create({
             data: {
                 ...character,
                 abilities: {
@@ -21,11 +26,11 @@ export default class CharacterModel {
         });
     }
     async updateCharacter(character) {
-        await prismaClient.character.update({ where: { id: character.id }, data: character });
+        await connector_js_1.default.character.update({ where: { id: character.id }, data: character });
     }
     async updateCharacterAndAbilities(character, abilities) {
         console.log(character);
-        await prismaClient.character.update({
+        await connector_js_1.default.character.update({
             where: {
                 id: character.id
             },
@@ -40,6 +45,7 @@ export default class CharacterModel {
         });
     }
     async deleteCharacter(id) {
-        await prismaClient.character.delete({ where: { id } });
+        await connector_js_1.default.character.delete({ where: { id } });
     }
 }
+exports.default = CharacterModel;

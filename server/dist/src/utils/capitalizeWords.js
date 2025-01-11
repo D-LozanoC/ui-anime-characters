@@ -1,3 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.capitalizeWord = capitalizeWord;
+exports.capitalizeWords = capitalizeWords;
 function capitalizeWords(wordsArray) {
     if (wordsArray.length === 0)
         return wordsArray;
@@ -6,4 +10,3 @@ function capitalizeWords(wordsArray) {
 function capitalizeWord(word) {
     return word.replace(/(^|-)([a-z])/g, (_, prefix, char) => prefix + char.toUpperCase());
 }
-export { capitalizeWord, capitalizeWords };
