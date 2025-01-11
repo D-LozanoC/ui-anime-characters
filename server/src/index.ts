@@ -11,4 +11,6 @@ const genreModel = new GenresModel
 const abilitiesModel = new AbilitiesModel
 const statusModel = new StatusModel
 
-createApp({animeModel, characterModel, genreModel, abilitiesModel, statusModel})
+const app = createApp({animeModel, characterModel, genreModel, abilitiesModel, statusModel})
+
+export default app
