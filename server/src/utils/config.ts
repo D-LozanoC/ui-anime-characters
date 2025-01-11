@@ -1,4 +1,3 @@
-process.loadEnvFile()
 export const {
     PORT = 3000,
     TURSO_AUTH_TOKEN = '',
