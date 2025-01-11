@@ -11,6 +11,7 @@ import createStatusRouter from "./routes/status.js"
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
+import { PORT } from "./utils/config.js"
 
 const app = express()
 
@@ -45,5 +46,7 @@ app.use((_req: Request, res: Response) => {
     res.status(404).sendFile(`${process.cwd()}/public/html/404.html`)
 })
 app.use(errorHandler)
+
+app.listen(PORT)
 
 export default app
