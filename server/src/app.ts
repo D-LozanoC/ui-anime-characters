@@ -1,8 +1,8 @@
-import express, { Application, Request, Response } from 'express'
+import express, { type Application, type Request, type Response } from 'express'
 import morgan from 'morgan'
 import createAnimeRouter from './routes/anime.js'
 import createGenresRouter from './routes/genres.js'
-import { modelProps } from './types/props.js'
+import type { modelProps } from './types/props.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import { PORT } from './utils/config.js'
 import cors from 'cors'
@@ -33,7 +33,7 @@ const createApp = ({ animeModel, characterModel, genreModel, abilitiesModel, sta
     app.use('/api', createAbilitiesRouter(abilitiesModel))
     app.use('/api', createStatusRouter(statusModel))
     app.use('/api', createAnimeRouter({ animeModel, characterModel }))
-    app.use((_req, res) => {
+    app.use((_req: Request, res: Response) => {
         res.status(404).sendFile(`${process.cwd()}/public/html/404.html`)
     })
     app.use(errorHandler)
