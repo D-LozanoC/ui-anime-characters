@@ -1,9 +1,9 @@
-import createApp from "./src/app.js"
-import AbilitiesModel from "./src/models/abilities.js"
-import AnimeModel from "./src/models/anime.js"
-import CharacterModel from "./src/models/characters.js"
-import GenresModel from "./src/models/genres.js"
-import StatusModel from "./src/models/status.js"
+import createApp from "./app.js"
+import AbilitiesModel from "./models/abilities.js"
+import AnimeModel from "./models/anime.js"
+import CharacterModel from "./models/characters.js"
+import GenresModel from "./models/genres.js"
+import StatusModel from "./models/status.js"
 
 const animeModel = new AnimeModel
 const characterModel = new CharacterModel

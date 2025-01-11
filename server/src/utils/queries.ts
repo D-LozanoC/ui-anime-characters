@@ -1,5 +1,5 @@
-import { Query } from "../types/interfaces.js"
-import { queryProps } from "../types/props.js"
+import type { Query } from "../types/interfaces.js"
+import type { queryProps } from "../types/props.js"
 
 const buildFindManyQuery = ({ genres, statusName, order, page, pageSize, animeId, abilities, title, name }: queryProps) => {
     const query: Query = {

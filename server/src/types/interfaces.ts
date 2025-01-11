@@ -1,6 +1,6 @@
-import { Anime, Character } from '../../prisma/generated/client'
-import { queryProps } from "./props.js";
-import { Request } from "express";
+import type { Anime, Character } from '../../prisma/generated/client/index.js'
+import type { queryProps } from "./props.js";
+import type { Request } from "express";
 
 export interface GenresModelInterface {
     getAllGenres(): Promise<string[] | null>;

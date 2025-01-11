@@ -1,12 +1,12 @@
-import { NextFunction, Request, Response } from "express"
+import type { NextFunction, Request, Response } from "express"
 import { capitalizeWords } from "../utils/capitalizeWords.js";
-import { queryProps } from "../types/props.js";
+import type { queryProps } from "../types/props.js";
 import createCustomError from "../utils/customError.js";
 import { validateCharacter, validatePartialCharacter } from "../validators/characters.js";
-import { CharacterModelInterface } from "../types/interfaces.js";
+import type { CharacterModelInterface } from "../types/interfaces.js";
 import prismaClient from "../utils/connector.js";
-import { Character } from '../../prisma/generated/client'
-import { SafeParseReturnType } from "zod";
+import type { Character } from '../../prisma/generated/client/index.js'
+import type { SafeParseReturnType } from "zod";
 
 export default class CharacterController {
     #model: CharacterModelInterface
@@ -36,7 +36,9 @@ export default class CharacterController {
 
     getCharacterById = async (req: Request, res: Response, next: NextFunction) => {
         const id = req.params.id;
-        const anime = await this.#model.getCharacterById(id)
+        let anime
+        if (id)
+            anime = await this.#model.getCharacterById(id)
         if (!anime) {
             const error = createCustomError('CharacterNotFoundError', `No hay ningún Personaje con el id: ${id}`)
             res.status(400)
@@ -134,7 +136,9 @@ export default class CharacterController {
 
     updateCharacter = async (req: Request, res: Response, next: NextFunction) => {
         const id = req.params.id
-        const character = await this.#model.getCharacterById(id)
+        let character
+        if (id)
+            character = await this.#model.getCharacterById(id)
         if (!character) {
             const error = createCustomError('CharacterNotFoundError', `No hay ningún personaje con el id: ${id}`)
             res.status(400)
@@ -165,15 +169,17 @@ export default class CharacterController {
 
     deleteCharacter = async (req: Request, res: Response, next: NextFunction) => {
         const id = req.params.id
-        const character = await this.#model.getCharacterById(id)
+        let character
+        if (id)
+            character = await this.#model.getCharacterById(id)
         if (!character) {
             const error = createCustomError('CharacterNotFoundError', `No hay ningún personaje con el id: ${id}`)
             res.status(400)
             next(error)
             return
         }
-
-        await this.#model.deleteCharacter(id)
+        if (id)
+            await this.#model.deleteCharacter(id)
 
         res.status(204).json({ message: "Anime successfully deleted", data: character }).end();
     }

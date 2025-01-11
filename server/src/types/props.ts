@@ -1,4 +1,4 @@
-import { AbilitiesModelInterface, AnimeModelInterface, CharacterModelInterface, GenresModelInterface, StatusModelInterface } from "./interfaces.js";
+import type { AbilitiesModelInterface, AnimeModelInterface, CharacterModelInterface, GenresModelInterface, StatusModelInterface } from "./interfaces.js";
 
 export type modelProps = {
     animeModel: AnimeModelInterface,

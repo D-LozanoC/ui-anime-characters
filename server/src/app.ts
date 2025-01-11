@@ -4,7 +4,7 @@ import createAnimeRouter from './routes/anime.js'
 import createGenresRouter from './routes/genres.js'
 import type { modelProps } from './types/props.js'
 import { errorHandler } from './middlewares/errorHandler.js'
-import { PORT } from './utils/config.js'
+// import { PORT } from './utils/config.js'
 import cors from 'cors'
 import createStatusRouter from './routes/status.js'
 import createAbilitiesRouter from './routes/abilities.js'
@@ -38,9 +38,9 @@ const createApp = ({ animeModel, characterModel, genreModel, abilitiesModel, sta
     })
     app.use(errorHandler)
 
-    app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
-    })
+    // app.listen(PORT, () => {
+    //     console.log(`Server is running on http://localhost:${PORT}`);
+    // })
 
     return app;
 }

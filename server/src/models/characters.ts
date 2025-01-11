@@ -1,6 +1,6 @@
-import { Character } from '../../prisma/generated/client'
-import { CharacterModelInterface } from "../types/interfaces.js"
-import { queryProps } from "../types/props.js"
+import type { Character } from "../../prisma/generated/client/index.js"
+import type { CharacterModelInterface } from "../types/interfaces.js"
+import type { queryProps } from "../types/props.js"
 import prismaClient from "../utils/connector.js"
 import { buildFindManyQuery } from "../utils/queries.js"
 

@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { GenresModelInterface } from "../types/interfaces.js";
+import type { NextFunction, Request, Response } from "express";
+import type { GenresModelInterface } from "../types/interfaces.js";
 
 export default class GenresController {
     #model: GenresModelInterface

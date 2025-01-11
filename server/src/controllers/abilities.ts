@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { AbilitiesModelInterface } from "../types/interfaces.js";
+import type { NextFunction, Request, Response } from "express";
+import type { AbilitiesModelInterface } from "../types/interfaces.js";
 
 export default class AbilitiesController {
     #model: AbilitiesModelInterface

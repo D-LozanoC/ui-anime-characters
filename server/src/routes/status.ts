@@ -1,6 +1,6 @@
 import { Router } from "express";
 import StatusController from "../controllers/status.js";
-import { StatusModelInterface } from "../types/interfaces.js";
+import type { StatusModelInterface } from "../types/interfaces.js";
 
 function createStatusRouter(statusModel: StatusModelInterface): Router {
     const router = Router();

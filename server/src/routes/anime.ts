@@ -1,7 +1,7 @@
 import { Router } from "express";
 import AnimeController from "../controllers/anime.js";
 import createCharacterRouter from "./characters.js";
-import { modelProps } from "../types/props.js";
+import type { modelProps } from "../types/props.js";
 
 function createAnimeRouter({animeModel, characterModel}: Omit<modelProps, 'genreModel' | 'statusModel' | 'abilitiesModel'>): Router {
     const router = Router();

@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { StatusModelInterface } from "../types/interfaces.js";
+import type { NextFunction, Request, Response } from "express";
+import type { StatusModelInterface } from "../types/interfaces.js";
 
 export default class StatusController {
     #model: StatusModelInterface

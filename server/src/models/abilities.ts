@@ -1,5 +1,5 @@
-import { Abilities } from '../../prisma/generated/client'
-import { AbilitiesModelInterface } from "../types/interfaces.js";
+import type { Abilities } from '../../prisma/generated/client/index.js'
+import type { AbilitiesModelInterface } from "../types/interfaces.js";
 import prismaClient from "../utils/connector.js";
 
 export default class AbilitiesModel implements AbilitiesModelInterface {

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import GenresController from "../controllers/genres.js";
-import { GenresModelInterface } from "../types/interfaces.js";
+import type { GenresModelInterface } from "../types/interfaces.js";
 
 function createGenresRouter(genresModel: GenresModelInterface): Router {
     const router = Router();

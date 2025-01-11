@@ -1,8 +1,8 @@
-import { AnimeModelInterface } from "../types/interfaces.js"
+import type { AnimeModelInterface } from "../types/interfaces.js"
 import prismaClient from "../utils/connector.js"
 import { buildFindManyQuery } from "../utils/queries.js"
-import { queryProps } from "../types/props.js"
-import { Anime } from '../../prisma/generated/client'
+import type { queryProps } from "../types/props.js"
+import type { Anime } from "../../prisma/generated/client/index.js"
 
 export default class AnimeModel implements AnimeModelInterface {
     getAllAnimes(filters: queryProps): Promise<Anime[]> {

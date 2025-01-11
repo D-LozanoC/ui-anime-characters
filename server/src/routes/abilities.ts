@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { AbilitiesModelInterface } from "../types/interfaces.js";
+import type { AbilitiesModelInterface } from "../types/interfaces.js";
 import AbilitiesController from "../controllers/abilities.js";
 
 function createAbilitiesRouter(abilitiesModel: AbilitiesModelInterface): Router {

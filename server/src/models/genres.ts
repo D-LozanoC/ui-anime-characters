@@ -1,5 +1,5 @@
-import { Genre } from '../../prisma/generated/client'
-import { GenresModelInterface } from "../types/interfaces.js";
+import type { Genre } from '../../prisma/generated/client/index.js'
+import type { GenresModelInterface } from "../types/interfaces.js";
 import prismaClient from "../utils/connector.js";
 
 export default class GenresModel implements GenresModelInterface {

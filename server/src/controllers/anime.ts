@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from "express";
-import { AnimeModelInterface } from "../types/interfaces.js";
+import type { NextFunction, Request, Response } from "express";
+import type { AnimeModelInterface } from "../types/interfaces.js";
 import createCustomError from "../utils/customError.js";
-import { queryProps } from "../types/props.js";
+import type { queryProps } from "../types/props.js";
 import { capitalizeWord, capitalizeWords } from "../utils/capitalizeWords.js";
 import { validateAnime, validatePartialAnime } from "../validators/anime.js";
 
@@ -27,7 +27,10 @@ export default class AnimeController {
 
     getAnimeById = async (req: Request, res: Response, next: NextFunction) => {
         const id = req.params.animeId;
-        const anime = await this.#model.getAnimeById(id)
+        let anime
+        if (id) {
+            anime = await this.#model.getAnimeById(id)
+        }
         if (!anime) {
             const error = createCustomError('AnimeNotFoundError', `No hay ningún anime con el id: ${id}`)
             res.status(400)
@@ -121,7 +124,7 @@ export default class AnimeController {
 
         const validations = animesToCreate.map(anime => validateAnime(anime))
 
-        if (validations.some(validation =>{
+        if (validations.some(validation => {
             if (!validation.success) {
                 next(validation.error)
                 return true
@@ -138,7 +141,10 @@ export default class AnimeController {
 
     updateAnime = async (req: Request, res: Response, next: NextFunction) => {
         const animeId = req.params.animeId
-        const anime = await this.#model.getAnimeById(animeId)
+        let anime
+        if (animeId) {
+            anime = await this.#model.getAnimeById(animeId)
+        }
         if (!anime) {
             const error = createCustomError('AnimeNotFoundError', `No hay ningún anime con el id: ${animeId}`)
             res.status(400)
@@ -169,7 +175,11 @@ export default class AnimeController {
 
     deleteAnime = async (req: Request, res: Response, next: NextFunction) => {
         const id = req.params.animeId;
-        const anime = await this.#model.getAnimeById(id)
+        let anime
+        if (id){
+            anime = await this.#model.getAnimeById(id)
+        }
+
         if (!anime) {
             const error = createCustomError('AnimeNotFoundError', `No hay ningún anime con el id: ${id}`)
             res.status(400)
@@ -177,7 +187,9 @@ export default class AnimeController {
             return
         }
 
-        this.#model.deleteAnime(id)
+        if (id){
+            this.#model.deleteAnime(id)
+        }
 
         res.status(200).json({ message: "Anime successfully deleted", data: anime }).end()
     };
