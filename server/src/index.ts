@@ -11,7 +11,7 @@ import createStatusRouter from "./routes/status.js"
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
-import { PORT } from "./utils/config.js"
+import path from "node:path"
 
 const app = express()
 
@@ -27,11 +27,11 @@ app.use(morgan('dev'))
 app.use(cors())
 
 app.get('/', (_req: Request, res: Response) => {
-    res.sendFile(`${process.cwd()}/public/html/index.html`)
+    res.sendFile(path.resolve('public/html/index.html'))
 })
 
 app.get('/docs', (_req: Request, res: Response) => {
-    res.sendFile(`${process.cwd()}/public/html/docs.html`)
+    res.sendFile(path.resolve('public/html/docs.html'))
 })
 
 app.get('/api', (_req: Request, res: Response) => {
@@ -43,7 +43,7 @@ app.use('/api', createAbilitiesRouter(abilitiesModel))
 app.use('/api', createStatusRouter(statusModel))
 app.use('/api', createAnimeRouter({ animeModel, characterModel }))
 app.use((_req: Request, res: Response) => {
-    res.status(404).sendFile(`${process.cwd()}/public/html/404.html`)
+    res.sendFile(path.resolve('public/html/404.html'))
 })
 app.use(errorHandler)
 
