@@ -1,9 +1,9 @@
-import createApp from "./app.ts"
-import AbilitiesModel from "./models/abilities.ts"
-import AnimeModel from "./models/anime.ts"
-import CharacterModel from "./models/characters.ts"
-import GenresModel from "./models/genres.ts"
-import StatusModel from "./models/status.ts"
+import createApp from "./src/app.ts"
+import AbilitiesModel from "./src/models/abilities.ts"
+import AnimeModel from "./src/models/anime.ts"
+import CharacterModel from "./src/models/characters.ts"
+import GenresModel from "./src/models/genres.ts"
+import StatusModel from "./src/models/status.ts"
 
 const animeModel = new AnimeModel
 const characterModel = new CharacterModel
