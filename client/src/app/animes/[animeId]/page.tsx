@@ -43,19 +43,19 @@ export default function AnimeCharacters({ params }: { params: Promise<{ animeId:
         const orderParam = order ? `&order=${order}` : '';
 
         if (animeId) {
-            fetch(`http://localhost:3001/api/animes/${animeId}/characters?page=${page}&pageSize=${pageSize}${abilityParam}${searchParam}${orderParam}`)
+            fetch(`https://anime-crud-api.vercel.app/api/animes/${animeId}/characters?page=${page}&pageSize=${pageSize}${abilityParam}${searchParam}${orderParam}`)
                 .then(result => result.ok ? result.json() : setError(new Error('FetchError')))
                 .then(data => setCharacters(data))
                 .catch(err => setError(err))
 
-            fetch(`http://localhost:3001/api/animes/${animeId}/characters`)
+            fetch(`https://anime-crud-api.vercel.app/api/animes/${animeId}/characters`)
                 .then(result => result.ok ? result.json() : setError(new Error('FetchError')))
                 .then(data => setTotalCharacters(data.length))
                 .catch(err => setError(err))
         }
 
         if (characterToUpdate && animeId) {
-            fetch(`http://localhost:3001/api/animes/${animeId}/characters/${characterToUpdate.id}`, {
+            fetch(`https://anime-crud-api.vercel.app/api/animes/${animeId}/characters/${characterToUpdate.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

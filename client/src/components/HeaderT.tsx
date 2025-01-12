@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import GitHubIco from './icons/GitHubIco'
 import LinkedinIco from './icons/LinkedinIco'
-import '@/styles/header.css'
+import '@/styles/headerTransparent.css'
 
 export default function () {
     return (
-        <header>
+        <header className='headerT'>
             <h1>AnimeCRUD</h1>
             <nav>
                 <ul>

@@ -50,7 +50,7 @@ const CreateModal = forwardRef(({ data, setCreated }: createModalProps, ref) => 
         
         if (newData) {
             if (isAnime(newData)) {
-                fetch('http://localhost:3001/api/animes', {
+                fetch('https://anime-crud-api.vercel.app/api/animes', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ const CreateModal = forwardRef(({ data, setCreated }: createModalProps, ref) => 
                         setCreated(true)
                     })
             } else if (isCharacter(newData)) {
-                fetch(`http://localhost:3001/api/animes/${data.animeId}/characters`, {
+                fetch(`https://anime-crud-api.vercel.app/api/animes/${data.animeId}/characters`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

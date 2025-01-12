@@ -1,7 +1,6 @@
 import { Anime } from "@/types/anime";
 import { Character } from "@/types/character";
 import { isAnime } from "@/utils/isData";
-import Image from "next/image";
 
 type cardProps = {
     data: Anime | Character,

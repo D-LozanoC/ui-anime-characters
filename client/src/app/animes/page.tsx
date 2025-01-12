@@ -6,8 +6,8 @@ import SearchFilters, { filtersType } from "@/components/search/searchFilters";
 import SearchCards from "@/components/search/searchCards";
 import SearchPagination from "@/components/search/searchPagination";
 import { Character } from "@/types/character";
-import '@/styles/main.css'
 import { isAnime } from "@/utils/isData";
+import '@/styles/main.css'
 
 export default function Animes() {
     const [animes, setAnimes] = useState<Anime[]>([]);
@@ -28,7 +28,7 @@ export default function Animes() {
         const orderParam = order ? `&order=${order}` : '';
         const statusParam = status === 'all' ? '' : `&status=${status}`
 
-        fetch(`http://localhost:3001/api/animes?page=${page}&pageSize=${pageSize}${genreParam}${searchParam}${orderParam}${statusParam}`)
+        fetch(`https://anime-crud-api.vercel.app/api/animes?page=${page}&pageSize=${pageSize}${genreParam}${searchParam}${orderParam}${statusParam}`)
             .then(response => response.json())
             .then(data => {
                 const animesArray: Anime[] = data.map((anime: Anime) => {
@@ -39,7 +39,7 @@ export default function Animes() {
             })
             .catch(err => setErr(err));
 
-        fetch(`http://localhost:3001/api/animes`)
+        fetch(`https://anime-crud-api.vercel.app/api/animes`)
             .then(response => response.json())
             .then(data => {
                 setTotalAnimes(data.length)
@@ -47,7 +47,7 @@ export default function Animes() {
             .catch(err => setErr(err));
 
         if (animeToUpdate) {
-            fetch('http://localhost:3001/api/animes/' + animeToUpdate.id, {
+            fetch('https://anime-crud-api.vercel.app/api/animes/' + animeToUpdate.id, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

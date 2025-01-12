@@ -32,7 +32,7 @@ const SearchModal = forwardRef((props: modalProps, ref) => {
             if (isAnime(data)) {
                 const deleteAnime = async () => {
                     try {
-                        const response = await fetch(`http://localhost:3001/api/animes/${props.toDelete}`, {
+                        const response = await fetch(`https://anime-crud-api.vercel.app/api/animes/${props.toDelete}`, {
                             method: "DELETE",
                         });
 
@@ -52,7 +52,7 @@ const SearchModal = forwardRef((props: modalProps, ref) => {
             } else if (isCharacter(data)) {
                 const deleteAnime = async () => {
                     try {
-                        const response = await fetch(`http://localhost:3001/api/animes/${data.animeId}/characters/${props.toDelete}`, {
+                        const response = await fetch(`https://anime-crud-api.vercel.app/api/animes/${data.animeId}/characters/${props.toDelete}`, {
                             method: "DELETE",
                         });
 

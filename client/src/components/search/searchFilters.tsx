@@ -35,17 +35,17 @@ export default function SearchFilters({ filters, setFilters, setCreated }: filte
     }
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/genres')
+        fetch('https://anime-crud-api.vercel.app/api/genres')
             .then(response => response.json())
             .then(data => setGenres(data))
             .catch(err => setErr(err));
 
-        fetch('http://localhost:3001/api/status')
+        fetch('https://anime-crud-api.vercel.app/api/status')
             .then(response => response.json())
             .then(data => setStatus(data))
             .catch(err => setErr(err));
 
-        fetch('http://localhost:3001/api/abilities')
+        fetch('https://anime-crud-api.vercel.app/api/abilities')
             .then(response => response.json())
             .then(data => setAbilities(data))
             .catch(err => setErr(err));
