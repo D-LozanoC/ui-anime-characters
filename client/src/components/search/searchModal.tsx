@@ -105,7 +105,7 @@ const SearchModal = forwardRef((props: modalProps, ref) => {
     }
 
     const onHrefHandle = () => {
-        window.location.href = `http://localhost:3000/animes/${data?.id}`
+        window.location.href = `https://anime-crud.vercel.app/animes/${data?.id}`
     }
 
     if (!data) {
