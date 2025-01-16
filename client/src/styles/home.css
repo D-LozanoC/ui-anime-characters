@@ -1,3 +1,117 @@
+
+@import url('../styles/root.css');
+@import url('../styles/index.css');
+
+.hero {
+    height: 95vh;
+    padding-top: 8vh;
+    background: linear-gradient(to top, var(--main-color) 5%, var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.heroTitle {
+    position: absolute;
+    top: 6vh;
+    left: 35vw;
+    width: 30vw;
+    color: var(--text-color-light);
+    font-size: 4rem;
+    text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 30px var(--main-color);
+}
+
+.hero-button {
+    padding: 2rem;
+    width: 20vw;
+    position: absolute;
+    bottom: 20vh;
+    left: 40vw;
+    border: none;
+    border-radius: 2rem;
+    color: var(--main-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all ease 300ms;
+
+    &:hover {
+        background-color: var(--main-color-dark);
+        color: var(--text-color-light);
+    }
+
+    &:active {
+        background-color: var(--main-color-active);
+        color: var(--text-color-light);
+    }
+}
+
+#contenedor {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    perspective-origin: center center;
+    perspective: 40rem;
+
+    h1 {
+        margin: 0;
+    }
+}
+
+#contenedor>div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+#left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    transform: rotateY(90deg) translateZ(-50vw) translateX(49.87vw);
+    perspective: 40rem;
+    perspective-origin: (center left);
+}
+
+#right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    transform: rotateY(-90deg) translateZ(-50vw) translateX(-49.87vw);
+}
+
+#center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    color: var(--text-color-light);
+    font-size: 8rem;
+    transform: translateZ(-110vw);
+}
+
+.imgContainer {
+    position: relative;
+    width: auto;
+    height: 56rem;
+    transition: all ease 300ms;
+    &:hover {
+        transform: translateY(-10rem);
+    }
+    cursor: pointer;
+    img {
+        transition: all ease 500ms;
+        height: 100%;
+        width: 100%;
+        object-fit: fill;
+    }
+}
+
 .home-container {
     text-align: center;
 }
@@ -19,7 +133,8 @@
 }
 
 .features {
-    margin-top: 40px;
+    margin-top: 3rem;
+    padding: 0 2rem;
 }
 
 .features h2 {
