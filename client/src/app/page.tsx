@@ -1,42 +1,19 @@
 'use client'
 
 import Link from 'next/link'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Anime } from '@/types/anime';
+import { useEffect, useState } from 'react';
 import Footer from '@/components/Footer';
 import HeaderT from '@/components/HeaderT';
 import '@/styles/home.css'
-
-async function getNewAnimesPerTime(setPage: Dispatch<SetStateAction<number>>, page: number) {
-  setTimeout(() => {
-    console.log(page);
-
-    if (page >= 5) {
-      console.log(page);
-      setPage(0)
-      return
-    }
-    console.log(page++);
-    setPage(page++)
-    return
-  }, 10000)
-}
+import { getNewAnimesPerTime } from '../utils/getNewAnimesPerTime';
+import { getAnimesByPage } from '@/services/animes';
 
 export default function Home() {
   const [animesImg, setAnimeImg] = useState<string[]>([])
   const [page, setPage] = useState<number>(1)
 
   useEffect(() => {
-    fetch(`https://anime-crud-api.vercel.app/api/animes?pageSize=6&page=${page}`)
-      .then(result => result.json())
-      .then(data => {
-        const url: string[] = []
-        data.map((anime: Anime) => {
-          url.push(anime.thumbnail)
-        });
-        setAnimeImg(url)
-      })
-
+    getAnimesByPage(page, 6, setAnimeImg)
     getNewAnimesPerTime(setPage, page)
   }, [page])
 

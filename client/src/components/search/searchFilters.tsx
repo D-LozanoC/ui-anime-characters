@@ -1,6 +1,7 @@
 'use client';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import CreateModal from "../CreateModal";
+import { getAllFilters } from "@/services/filters";
 
 export type filtersType = {
     search: string,
@@ -21,9 +22,9 @@ type filterProps = {
 
 export default function SearchFilters({ filters, setFilters, setCreated }: filterProps) {
     const ref = useRef<HTMLDialogElement>(null)
-    const [genres, setGenres] = useState([]);
-    const [abilities, setAbilities] = useState([]);
-    const [status, setStatus] = useState([]);
+    const [genres, setGenres] = useState<string[]>([]);
+    const [abilities, setAbilities] = useState<string[]>([]);
+    const [status, setStatus] = useState<string[]>([]);
     const [err, setErr] = useState<Error | null>(null);
 
     const data = {
@@ -35,20 +36,7 @@ export default function SearchFilters({ filters, setFilters, setCreated }: filte
     }
 
     useEffect(() => {
-        fetch('https://anime-crud-api.vercel.app/api/genres')
-            .then(response => response.json())
-            .then(data => setGenres(data))
-            .catch(err => setErr(err));
-
-        fetch('https://anime-crud-api.vercel.app/api/status')
-            .then(response => response.json())
-            .then(data => setStatus(data))
-            .catch(err => setErr(err));
-
-        fetch('https://anime-crud-api.vercel.app/api/abilities')
-            .then(response => response.json())
-            .then(data => setAbilities(data))
-            .catch(err => setErr(err));
+        getAllFilters(setGenres, setStatus, setAbilities, setErr)
     }, []);
 
     const handleGenreChange = (e: { target: { value: any; }; }) => {

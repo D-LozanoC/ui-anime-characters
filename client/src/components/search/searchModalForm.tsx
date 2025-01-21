@@ -6,6 +6,7 @@ import makeAnimated from 'react-select/animated'
 import { customStyles } from "@/utils/customStyles";
 import { Character } from "@/types/character";
 import { isAnime, isArrayObject, isArrayString, isCharacter } from "@/utils/isData";
+import { getAllFilters } from "@/services/filters";
 
 type modalFormProps = {
     data: Anime | Character | undefined,
@@ -34,20 +35,7 @@ export default function SearchModalForm(params: modalFormProps) {
     const [selectedAbilities, setSelectedAbilities] = useState<{ value: string; label: string }[] | undefined>(dataForAbilities());
 
     useEffect(() => {
-        fetch('https://anime-crud-api.vercel.app/api/genres')
-            .then(response => response.json())
-            .then(data => setGenres(data))
-            .catch(err => setErr(err));
-
-        fetch('https://anime-crud-api.vercel.app/api/status')
-            .then(response => response.json())
-            .then(data => setStatus(data))
-            .catch(err => setErr(err));
-
-        fetch('https://anime-crud-api.vercel.app/api/abilities')
-            .then(response => response.json())
-            .then(data => setAbilities(data))
-            .catch(err => setErr(err));
+        getAllFilters(setGenres, setStatus, setAbilities, setErr)
     }, []);
 
     if (err) return <h1>Error: {err.message}</h1>;

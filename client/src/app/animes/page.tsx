@@ -8,6 +8,7 @@ import SearchPagination from "@/components/search/searchPagination";
 import { Character } from "@/types/character";
 import { isAnime } from "@/utils/isData";
 import '@/styles/main.css'
+import { getAllAnimes, getAnimesByFilters } from "@/services/animes";
 
 export default function Animes() {
     const [animes, setAnimes] = useState<Anime[]>([]);
@@ -22,29 +23,9 @@ export default function Animes() {
 
 
     useEffect(() => {
-        const { search, genre, order, status } = filters;
-        const genreParam = genre === 'all' ? '' : `&genres=${genre}`;
-        const searchParam = search ? `&title=${search}` : '';
-        const orderParam = order ? `&order=${order}` : '';
-        const statusParam = status === 'all' ? '' : `&status=${status}`
-
-        fetch(`https://anime-crud-api.vercel.app/api/animes?page=${page}&pageSize=${pageSize}${genreParam}${searchParam}${orderParam}${statusParam}`)
-            .then(response => response.json())
-            .then(data => {
-                const animesArray: Anime[] = data.map((anime: Anime) => {
-                    anime.genres = anime.genres.map((genre: any) => genre.name)
-                    return anime
-                })
-                setAnimes(animesArray);
-            })
-            .catch(err => setErr(err));
-
-        fetch(`https://anime-crud-api.vercel.app/api/animes`)
-            .then(response => response.json())
-            .then(data => {
-                setTotalAnimes(data.length)
-            })
-            .catch(err => setErr(err));
+        getAnimesByFilters(filters, setAnimes, page, pageSize, setErr)
+        getAllAnimes(setTotalAnimes, setErr)
+        
 
         if (animeToUpdate) {
             fetch('https://anime-crud-api.vercel.app/api/animes/' + animeToUpdate.id, {

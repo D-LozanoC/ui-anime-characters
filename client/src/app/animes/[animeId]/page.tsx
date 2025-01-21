@@ -9,6 +9,7 @@ import '@/styles/main.css'
 import SearchFilters, { filtersType } from "@/components/search/searchFilters";
 import SearchPagination from "@/components/search/searchPagination";
 import { isAnime } from "@/utils/isData";
+import { getFilteredCharacters, getTotalCharacters } from "@/services/characters";
 
 export default function AnimeCharacters({ params }: { params: Promise<{ animeId: string }> }) {
     const [characters, setCharacters] = useState<Character[]>([])
@@ -37,21 +38,9 @@ export default function AnimeCharacters({ params }: { params: Promise<{ animeId:
     }, [params])
 
     useEffect(() => {
-        const { search, ability, order } = filters;
-        const abilityParam = ability === 'all' ? '' : `&abilities=${ability}`;
-        const searchParam = search ? `&name=${search}` : '';
-        const orderParam = order ? `&order=${order}` : '';
-
         if (animeId) {
-            fetch(`https://anime-crud-api.vercel.app/api/animes/${animeId}/characters?page=${page}&pageSize=${pageSize}${abilityParam}${searchParam}${orderParam}`)
-                .then(result => result.ok ? result.json() : setError(new Error('FetchError')))
-                .then(data => setCharacters(data))
-                .catch(err => setError(err))
-
-            fetch(`https://anime-crud-api.vercel.app/api/animes/${animeId}/characters`)
-                .then(result => result.ok ? result.json() : setError(new Error('FetchError')))
-                .then(data => setTotalCharacters(data.length))
-                .catch(err => setError(err))
+            getFilteredCharacters(filters, animeId, page, pageSize, setCharacters, setError)
+            getTotalCharacters(setError, setTotalCharacters, animeId)
         }
 
         if (characterToUpdate && animeId) {
