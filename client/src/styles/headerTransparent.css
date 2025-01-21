@@ -8,7 +8,7 @@
     height: 8vh;
     padding: 0 2rem;
     background-color: transparent;
-    backdrop-filter: blur(25);
+    backdrop-filter: blur(1rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
